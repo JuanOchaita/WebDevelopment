@@ -1,358 +1,139 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Juan Ochaita - CV</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <style>
-/* Minecraft Font Import */
-@font-face {
-    font-family: 'Minecraft';
-    src: url('minecraft_font.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* GitHub Dark Mode CV Styles */
-
-/* Reset and base styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
-    background-color: #0d1117;
-    color: #e6edf3;
-    line-height: 1.5;
-    font-size: 14px;
-}
-
-/* Header styles */
-header {
-    background-color: #161b22;
-    border-bottom: 1px solid #30363d;
-    padding: 24px;
-    text-align: center;
-    position: relative;
-}
-
-header img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 3px solid #30363d;
-    margin-bottom: 16px;
-    object-fit: cover;
-}
-
-header h1 {
-    font-family: 'Minecraft', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    color: #f0f6fc;
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 8px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    letter-spacing: 1px;
-}
-
-/* Navigation styles */
-nav {
-    background-color: #161b22;
-    border-bottom: 1px solid #30363d;
-    padding: 16px 24px;
-    display: flex;
-    gap: 32px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-nav a {
-    color: #7d8590;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 8px 16px;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-    position: relative;
-}
-
-nav a:hover {
-    color: #58a6ff;
-    background-color: #21262d;
-}
-
-nav a:active {
-    color: #f0f6fc;
-    background-color: #30363d;
-}
-
-/* Section styles */
-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 32px 24px;
-    background-color: #0d1117;
-}
-
-section h2 {
-    font-family: 'Minecraft', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    color: #f0f6fc;
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 16px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #30363d;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-    letter-spacing: 0.5px;
-}
-
-section h3 {
-    color: #58a6ff;
-    font-size: 18px;
-    font-weight: 600;
-    margin: 24px 0 12px 0;
-}
-
-section p {
-    margin-bottom: 16px;
-    color: #e6edf3;
-}
-
-/* Table styles (GitHub-like) */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 24px 0;
-    background-color: #161b22;
-    border-radius: 6px;
-    overflow: hidden;
-    border: 1px solid #30363d;
-}
-
-caption {
-    text-align: left;
-    font-weight: 600;
-    color: #f0f6fc;
-    margin-bottom: 16px;
-    padding: 0;
-}
-
-thead th {
-    background-color: #21262d;
-    color: #f0f6fc;
-    font-weight: 600;
-    padding: 12px 16px;
-    text-align: left;
-    border-bottom: 1px solid #30363d;
-}
-
-tbody td {
-    padding: 12px 16px;
-    border-bottom: 1px solid #30363d;
-    color: #e6edf3;
-}
-
-tbody tr:last-child td {
-    border-bottom: none;
-}
-
-tbody tr:hover {
-    background-color: #21262d;
-}
-
-/* List styles */
-ul, ol {
-    margin: 16px 0;
-    padding-left: 24px;
-}
-
-li {
-    margin: 8px 0;
-    color: #e6edf3;
-}
-
-ul li {
-    position: relative;
-}
-
-ul li::marker {
-    color: #58a6ff;
-}
-
-ol li::marker {
-    color: #58a6ff;
-    font-weight: 600;
-}
-
-/* Nested lists */
-ul ul, ol ol, ul ol, ol ul {
-    margin: 8px 0;
-    padding-left: 20px;
-}
-
-/* Links */
-a {
-    color: #58a6ff;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-a:visited {
-    color: #bc8cff;
-}
-
-/* Contact section specific styles */
-#contacto {
-    background-color: #161b22;
-    border-radius: 6px;
-    border: 1px solid #30363d;
-    margin-top: 24px;
-}
-
-#contacto p {
-    font-size: 16px;
-}
-
-/* Footer styles */
-footer {
-    background-color: #161b22;
-    border-top: 1px solid #30363d;
-    padding: 24px;
-    text-align: center;
-    margin-top: 32px;
-}
-
-footer a {
-    display: inline-block;
-    margin: 0 8px;
-    padding: 8px;
-    border-radius: 6px;
-    transition: background-color 0.2s ease;
-}
-
-footer a:hover {
-    background-color: #21262d;
-}
-
-footer img {
-    filter: invert(1) brightness(0.8);
-    transition: filter 0.2s ease;
-}
-
-footer a:hover img {
-    filter: invert(1) brightness(1);
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-    }
-    
-    section {
-        padding: 24px 16px;
-    }
-    
-    header {
-        padding: 16px;
-    }
-    
-    header h1 {
-        font-size: 28px;
-    }
-    
-    section h2 {
-        font-size: 20px;
-    }
-    
-    table {
-        font-size: 12px;
-    }
-    
-    thead th, tbody td {
-        padding: 8px 12px;
-    }
-}
-
-@media (max-width: 480px) {
-    header img {
-        width: 100px;
-        height: 100px;
-    }
-    
-    header h1 {
-        font-size: 24px;
-    }
-    
-    section h2 {
-        font-size: 18px;
-    }
-    
-    table {
-        font-size: 11px;
-    }
-    
-    thead th, tbody td {
-        padding: 6px 8px;
-    }
-}
-
-/* Accessibility improvements */
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
-/* Focus styles for better accessibility */
-a:focus, nav a:focus {
-    outline: 2px solid #58a6ff;
-    outline-offset: 2px;
-}
-
-/* Print styles */
-@media print {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juan Ochaita - CV</title>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-        background-color: white;
-        color: black;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+        background-color: #0d1117;
+        color: #e6edf3;
+        line-height: 1.5;
+        font-size: 14px;
     }
-    
-    header, section, footer {
-        background-color: white;
+    header {
+        background-color: #161b22;
+        border-bottom: 1px solid #30363d;
+        padding: 24px;
+        text-align: center;
     }
-    
+    header img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 3px solid #30363d;
+        margin-bottom: 16px;
+        object-fit: cover;
+    }
+    header h1 {
+        font-size: 32px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #f0f6fc;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        height: 60px;
+        align-items: center;
+        background-color: #161b22;
+        border-bottom: 1px solid #30363d;
+    }
     nav a {
-        color: black;
+        color: #58a6ff;
+        text-decoration: none;
+        font-weight: 500;
     }
-    
+    nav a:hover {
+        text-decoration: underline;
+    }
+    section {
+        margin: 20px auto;
+        max-width: 1000px;
+        padding: 16px;
+        background-color: #161b22;
+        border-radius: 6px;
+        border: 1px solid #30363d;
+    }
+    section h2 {
+        font-size: 24px;
+        margin-bottom: 12px;
+        color: #f0f6fc;
+        border-bottom: 1px solid #30363d;
+        padding-bottom: 8px;
+    }
     table {
-        background-color: white;
-        border: 1px solid black;
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 16px;
     }
-    
-    thead th {
-        background-color: #f0f0f0;
-        color: black;
+    caption {
+        text-align: left;
+        font-weight: 600;
+        color: #f0f6fc;
+        margin-bottom: 8px;
     }
-    
-    header h1, section h2 {
-        color: black;
-        text-shadow: none;
+    th, td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid #30363d;
     }
-}
-    </style>
+    th {
+        background-color: #21262d;
+        color: #f0f6fc;
+        font-weight: 600;
+    }
+    tr:hover td {
+        background-color: #21262d;
+    }
+    .card {
+        background-color: #161b22;
+        padding: 16px;
+        margin-bottom: 16px;
+        border-radius: 6px;
+        border: 1px solid #30363d;
+    }
+    .card h3 {
+        color: #58a6ff;
+        margin-bottom: 8px;
+    }
+    ul, ol {
+        margin: 16px 0;
+        padding-left: 24px;
+    }
+    li {
+        margin: 8px 0;
+    }
+    ul li::marker,
+    ol li::marker {
+        color: #58a6ff;
+        font-weight: 600;
+    }
+    a {
+        color: #58a6ff;
+    }
+    a:visited {
+        color: #bc8cff;
+    }
+    footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        height: 80px;
+        margin-top: 24px;
+        background-color: #161b22;
+        border-top: 1px solid #30363d;
+    }
+    footer img {
+        width: 30px;
+        height: auto;
+        filter: invert(1);
+    }
+</style>
 </head>
 <body>
 
@@ -372,9 +153,8 @@ a:focus, nav a:focus {
 <section id="educacion">
     <h2>📚 Educación</h2>
     <p><strong>Descripción:</strong> Historial académico de Juan Ochaita, enfocado en tecnología y ciencias de la computación.</p>
-
     <table>
-        <caption>Formación académica de Juan Ochaita, desde bachillerato hasta estudios universitarios</caption>
+        <caption>Formación académica de Juan Ochaita</caption>
         <thead>
             <tr>
                 <th>Año</th>
@@ -399,9 +179,8 @@ a:focus, nav a:focus {
 
 <section id="experiencia">
     <h2>💼 Experiencia Laboral</h2>
-    
     <table>
-        <caption>Historial profesional de Juan Ochaita, incluyendo posiciones actuales y anteriores</caption>
+        <caption>Historial profesional de Juan Ochaita</caption>
         <thead>
             <tr>
                 <th>Periodo</th>
@@ -426,47 +205,50 @@ a:focus, nav a:focus {
 
 <section id="proyectos">
     <h2>🚀 Proyectos & Habilidades</h2>
-
-    <h3>💻 Habilidades Técnicas</h3>
-    <ul>
-        <li><strong>Python</strong> - Desarrollo backend y análisis de datos</li>
-        <li><strong>Gestión de proyectos</strong> - Metodologías ágiles y tradicionales</li>
-        <li><strong>Resolución de problemas</strong> - Pensamiento analítico y lógico</li>
-        <li><strong>JavaScript</strong> - Desarrollo frontend y Node.js</li>
-        <li><strong>Git/GitHub</strong> - Control de versiones y colaboración</li>
-    </ul>
-
-    <h3>🎨 Hobbies & Intereses</h3>
-    <ul>
-        <li><strong>Películas</strong> - Especialmente ciencia ficción y tecnología</li>
-        <li><strong>Videojuegos</strong> - Desarrollo indie y gaming competitivo</li>
-        <li><strong>Cocina</strong> - Experimentación con recetas internacionales</li>
-        <li><strong>Tecnología</strong> - Últimas tendencias en desarrollo de software</li>
-    </ul>
-
-    <h3>⚡ Proceso de trabajo</h3>
-    <ol>
-        <li><strong>Análisis de proyecto</strong>
-            <ul>
-                <li>Definición de requerimientos</li>
-                <li>Identificación de stakeholders</li>
-            </ul>
-        </li>
-        <li><strong>Investigación</strong>
-            <ul>
-                <li>Investigación teórica</li>
-                <li>Evaluación de herramientas disponibles</li>
-                <li>Análisis de tecnologías emergentes</li>
-            </ul>
-        </li>
-        <li><strong>Distribución y ejecución de proyecto</strong>
-            <ul>
-                <li>Planificación de sprints</li>
-                <li>Desarrollo iterativo</li>
-                <li>Testing y deployment</li>
-            </ul>
-        </li>
-    </ol>
+    <div class="card">
+        <h3>💻 Habilidades Técnicas</h3>
+        <ul>
+            <li><strong>Python</strong> - Desarrollo backend y análisis de datos</li>
+            <li><strong>Gestión de proyectos</strong> - Metodologías ágiles y tradicionales</li>
+            <li><strong>Resolución de problemas</strong> - Pensamiento analítico y lógico</li>
+            <li><strong>JavaScript</strong> - Desarrollo frontend y Node.js</li>
+            <li><strong>Git/GitHub</strong> - Control de versiones y colaboración</li>
+        </ul>
+    </div>
+    <div class="card">
+        <h3>🎨 Hobbies & Intereses</h3>
+        <ul>
+            <li><strong>Películas</strong> - Especialmente ciencia ficción y tecnología</li>
+            <li><strong>Videojuegos</strong> - Desarrollo indie y gaming competitivo</li>
+            <li><strong>Cocina</strong> - Experimentación con recetas internacionales</li>
+            <li><strong>Tecnología</strong> - Últimas tendencias en desarrollo de software</li>
+        </ul>
+    </div>
+    <div class="card">
+        <h3>⚡ Proceso de trabajo</h3>
+        <ol>
+            <li><strong>Análisis de proyecto</strong>
+                <ul>
+                    <li>Definición de requerimientos</li>
+                    <li>Identificación de stakeholders</li>
+                </ul>
+            </li>
+            <li><strong>Investigación</strong>
+                <ul>
+                    <li>Investigación teórica</li>
+                    <li>Evaluación de herramientas disponibles</li>
+                    <li>Análisis de tecnologías emergentes</li>
+                </ul>
+            </li>
+            <li><strong>Distribución y ejecución de proyecto</strong>
+                <ul>
+                    <li>Planificación de sprints</li>
+                    <li>Desarrollo iterativo</li>
+                    <li>Testing y deployment</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
 </section>
 
 <section id="contacto">
@@ -478,13 +260,13 @@ a:focus, nav a:focus {
 
 <footer>
     <a href="mailto:juanom@ufm.edu" target="_blank" aria-label="Enviar email">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Gmail" style="width:30px; height:auto;">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Gmail">
     </a>
     <a href="https://www.linkedin.com/in/juan-ochaita-207685334" target="_blank" aria-label="Visitar LinkedIn">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" style="width:30px; height:auto;">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn">
     </a>
     <a href="https://github.com/JuanOchaita" target="_blank" aria-label="Visitar GitHub">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" style="width:30px; height:auto;">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub">
     </a>
 </footer>
 
