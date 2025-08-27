@@ -1,26 +1,18 @@
-/* GitHub Dark Mode CV - Colores */
+/* Paso 1: Colores básicos GitHub Dark Mode */
 
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* Colores base del body */
 body {
     background-color: #0d1117;
     color: #e6edf3;
 }
 
+/* Header */
 header {
     background-color: #161b22;
     border-bottom: 1px solid #30363d;
 }
 
-header h1 {
-    color: #f0f6fc;
-}
-
+/* Navegación */
 nav {
     background-color: #161b22;
     border-bottom: 1px solid #30363d;
@@ -32,43 +24,42 @@ nav a {
 
 nav a:hover {
     color: #58a6ff;
-    background-color: #21262d;
 }
 
-nav a:active {
+/* Secciones */
+section {
+    background-color: #0d1117;
+}
+
+/* Títulos */
+h1, h2 {
     color: #f0f6fc;
-    background-color: #30363d;
 }
 
-section h2 {
-    color: #f0f6fc;
-    border-bottom: 1px solid #30363d;
-}
-
-section h3 {
+h3 {
     color: #58a6ff;
 }
 
+/* Tablas */
 table {
     background-color: #161b22;
     border: 1px solid #30363d;
 }
 
-thead th {
+th {
     background-color: #21262d;
     color: #f0f6fc;
+}
+
+td {
     border-bottom: 1px solid #30363d;
 }
 
-tbody td {
-    color: #e6edf3;
-    border-bottom: 1px solid #30363d;
-}
-
-tbody tr:hover {
+tr:hover {
     background-color: #21262d;
 }
 
+/* Enlaces */
 a {
     color: #58a6ff;
 }
@@ -77,24 +68,12 @@ a:visited {
     color: #bc8cff;
 }
 
-#contacto {
-    background-color: #161b22;
-    border: 1px solid #30363d;
-}
-
+/* Footer */
 footer {
     background-color: #161b22;
     border-top: 1px solid #30363d;
 }
 
-footer a:hover {
-    background-color: #21262d;
-}
-
 footer img {
     filter: invert(1) brightness(0.8);
-}
-
-footer a:hover img {
-    filter: invert(1) brightness(1);
 }
