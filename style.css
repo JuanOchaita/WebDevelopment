@@ -1,0 +1,100 @@
+/* GitHub Dark Mode CV - Colores */
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0d1117;
+    color: #e6edf3;
+}
+
+header {
+    background-color: #161b22;
+    border-bottom: 1px solid #30363d;
+}
+
+header h1 {
+    color: #f0f6fc;
+}
+
+nav {
+    background-color: #161b22;
+    border-bottom: 1px solid #30363d;
+}
+
+nav a {
+    color: #7d8590;
+}
+
+nav a:hover {
+    color: #58a6ff;
+    background-color: #21262d;
+}
+
+nav a:active {
+    color: #f0f6fc;
+    background-color: #30363d;
+}
+
+section h2 {
+    color: #f0f6fc;
+    border-bottom: 1px solid #30363d;
+}
+
+section h3 {
+    color: #58a6ff;
+}
+
+table {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+}
+
+thead th {
+    background-color: #21262d;
+    color: #f0f6fc;
+    border-bottom: 1px solid #30363d;
+}
+
+tbody td {
+    color: #e6edf3;
+    border-bottom: 1px solid #30363d;
+}
+
+tbody tr:hover {
+    background-color: #21262d;
+}
+
+a {
+    color: #58a6ff;
+}
+
+a:visited {
+    color: #bc8cff;
+}
+
+#contacto {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+}
+
+footer {
+    background-color: #161b22;
+    border-top: 1px solid #30363d;
+}
+
+footer a:hover {
+    background-color: #21262d;
+}
+
+footer img {
+    filter: invert(1) brightness(0.8);
+}
+
+footer a:hover img {
+    filter: invert(1) brightness(1);
+}
