@@ -6,6 +6,154 @@
     <title>Juan Ochaita - CV</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="style.css">
+    <style>
+        @font-face {
+            font-family: 'Minecraft';
+            src: url('minecraft_font.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background-color: #0d1117;
+            color: #e6edf3;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        header {
+            background-color: #161b22;
+            border-bottom: 1px solid #30363d;
+            padding: 24px;
+            text-align: center;
+        }
+        header img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #30363d;
+            margin-bottom: 16px;
+            object-fit: cover;
+        }
+        header h1 {
+            font-family: 'Minecraft', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #f0f6fc;
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            height: 60px;
+        }
+        .nav-container .item {
+            margin: 0 12px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+            background-color: #0d1117;
+        }
+        .grid-item-header {
+            grid-column: 1 / -1;
+            font-family: 'Minecraft', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #f0f6fc;
+            font-size: 24px;
+            font-weight: 600;
+            border-bottom: 1px solid #30363d;
+            padding-bottom: 8px;
+        }
+        .grid-item-description {
+            grid-column: 1 / -1;
+            color: #e6edf3;
+        }
+        .grid-item-table {
+            grid-column: 1 / -1;
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #161b22;
+            border-radius: 6px;
+            overflow: hidden;
+            border: 1px solid #30363d;
+        }
+        .grid-item-card {
+            background-color: #161b22;
+            padding: 16px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+            color: #e6edf3;
+        }
+        .grid-item-card h3 {
+            font-family: 'Minecraft', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #58a6ff;
+        }
+
+        caption { text-align: left; font-weight: 600; color: #f0f6fc; margin-bottom: 16px; }
+        thead th { background-color: #21262d; color: #f0f6fc; font-weight: 600; padding: 12px 16px; text-align: left; border-bottom: 1px solid #30363d; }
+        tbody td { padding: 12px 16px; border-bottom: 1px solid #30363d; color: #e6edf3; }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background-color: #21262d; }
+
+        ul, ol { margin: 16px 0; padding-left: 24px; }
+        li { margin: 8px 0; color: #e6edf3; }
+        ul li::marker { color: #58a6ff; }
+        ol li::marker { color: #58a6ff; font-weight: 600; }
+
+        a { color: #58a6ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        a:visited { color: #bc8cff; }
+
+        #contacto {
+            background-color: #161b22;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+            margin-top: 24px;
+            padding: 16px;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            height: auto;
+            padding: 16px 0;
+        }
+        .footer-container .item img {
+            width: 30px;
+            height: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        @media screen and (max-width: 1024px) {
+            header img { width: 100px; height: 100px; }
+            header h1 { font-size: 28px; }
+            .grid-item-card { padding: 12px; }
+        }
+        @media screen and (max-width: 768px) {
+            header img { width: 80px; height: 80px; }
+            header h1 { font-size: 24px; }
+            .grid-item-header { font-size: 20px; }
+            .grid-item-table { font-size: 12px; }
+            .grid-container { gap: 12px; }
+            .nav-container { flex-direction: column; height: auto; padding: 8px 0; }
+            .nav-container .item { margin: 4px 0; }
+        }
+    </style>
 </head>
 <body>
 
@@ -15,7 +163,6 @@
     <p style="color: #7d8590; margin-top: 8px;">Desarrollador Full Stack | Ingeniería en Ciencias de la Computación</p>
 </header>
 
-<!-- FLEX BOX PARA NAV -->
 <nav class="container nav-container">
     <a class="item" href="#educacion">📚 Educación</a>
     <a class="item" href="#experiencia">💼 Experiencia Laboral</a>
@@ -23,67 +170,37 @@
     <a class="item" href="#contacto">📞 Contacto</a>
 </nav>
 
-<!-- CSS GRID para Educación -->
 <section id="educacion" class="grid-container">
     <h2 class="grid-item-header">📚 Educación</h2>
     <p class="grid-item-description"><strong>Descripción:</strong> Historial académico de Juan Ochaita, enfocado en tecnología y ciencias de la computación.</p>
-
     <table class="grid-item-table">
         <caption>Formación académica de Juan Ochaita, desde bachillerato hasta estudios universitarios</caption>
         <thead>
-            <tr>
-                <th>Año</th>
-                <th>Institución</th>
-                <th>Título obtenido</th>
-            </tr>
+            <tr><th>Año</th><th>Institución</th><th>Título obtenido</th></tr>
         </thead>
         <tbody>
-            <tr>
-                <td>2020-2024</td>
-                <td>Universidad Francisco Marroquín</td>
-                <td>Ingeniería en Ciencias de la Computación</td>
-            </tr>
-            <tr>
-                <td>2018-2020</td>
-                <td>Colegio Internacional de Guatemala</td>
-                <td>Bachillerato en Ciencias y Letras</td>
-            </tr>
+            <tr><td>2020-2024</td><td>Universidad Francisco Marroquín</td><td>Ingeniería en Ciencias de la Computación</td></tr>
+            <tr><td>2018-2020</td><td>Colegio Internacional de Guatemala</td><td>Bachillerato en Ciencias y Letras</td></tr>
         </tbody>
     </table>
 </section>
 
-<!-- CSS GRID para Experiencia -->
 <section id="experiencia" class="grid-container">
     <h2 class="grid-item-header">💼 Experiencia Laboral</h2>
-    
     <table class="grid-item-table">
         <caption>Historial profesional de Juan Ochaita, incluyendo posiciones actuales y anteriores</caption>
         <thead>
-            <tr>
-                <th>Periodo</th>
-                <th>Empresa</th>
-                <th>Puesto</th>
-            </tr>
+            <tr><th>Periodo</th><th>Empresa</th><th>Puesto</th></tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Enero 2023 - Presente</td>
-                <td>TechSolutions Guatemala</td>
-                <td>Desarrollador Junior</td>
-            </tr>
-            <tr>
-                <td>Junio 2022 - Diciembre 2022</td>
-                <td>TechProblems S.A.</td>
-                <td>Asistente de Laboratorio de Computación</td>
-            </tr>
+            <tr><td>Enero 2023 - Presente</td><td>TechSolutions Guatemala</td><td>Desarrollador Junior</td></tr>
+            <tr><td>Junio 2022 - Diciembre 2022</td><td>TechProblems S.A.</td><td>Asistente de Laboratorio de Computación</td></tr>
         </tbody>
     </table>
 </section>
 
-<!-- CSS GRID para Proyectos -->
 <section id="proyectos" class="grid-container">
     <h2 class="grid-item-header">🚀 Proyectos & Habilidades</h2>
-
     <div class="grid-item-card">
         <h3>💻 Habilidades Técnicas</h3>
         <ul>
@@ -94,7 +211,6 @@
             <li><strong>Git/GitHub</strong> - Control de versiones y colaboración</li>
         </ul>
     </div>
-
     <div class="grid-item-card">
         <h3>🎨 Hobbies & Intereses</h3>
         <ul>
@@ -104,7 +220,6 @@
             <li><strong>Tecnología</strong> - Últimas tendencias en desarrollo de software</li>
         </ul>
     </div>
-
     <div class="grid-item-card">
         <h3>⚡ Proceso de trabajo</h3>
         <ol>
@@ -139,17 +254,10 @@
     <p><strong>Ubicación:</strong> Guatemala City, Guatemala</p>
 </section>
 
-<!-- FLEX BOX PARA FOOTER -->
 <footer class="container footer-container">
-    <a class="item" href="mailto:juanom@ufm.edu" target="_blank" aria-label="Enviar email">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Gmail" style="width:30px; height:auto;">
-    </a>
-    <a class="item" href="https://www.linkedin.com/in/juan-ochaita-207685334" target="_blank" aria-label="Visitar LinkedIn">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" style="width:30px; height:auto;">
-    </a>
-    <a class="item" href="https://github.com/JuanOchaita" target="_blank" aria-label="Visitar GitHub">
-        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" style="width:30px; height:auto;">
-    </a>
+    <a class="item" href="mailto:juanom@ufm.edu"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Gmail"></a>
+    <a class="item" href="https://www.linkedin.com/in/juan-ochaita-207685334" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn"></a>
+    <a class="item" href="https://github.com/JuanOchaita" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub"></a>
 </footer>
 
 </body>
