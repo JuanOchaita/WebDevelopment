@@ -1,58 +1,126 @@
-/* Paso 1: Colores básicos GitHub Dark Mode */
+/* Paso 2: Colores + Fuentes */
 
-/* Colores base del body */
+/* Importar fuente Minecraft - Usando el nombre exacto del sistema */
+@font-face {
+    font-family: 'MinecraftFont';
+    src: url('minecraft_font.ttf') format('truetype'),
+         url('minecraft_font.woff2') format('woff2'),
+         url('minecraft_font.woff') format('woff');
+    font-display: swap;
+}
+
+/* También intentar usar la fuente del sistema directamente */
 body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
     background-color: #0d1117;
     color: #e6edf3;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+/* Título principal con fuente Minecraft - probando múltiples nombres */
+h1 {
+    font-family: 'Minecraft Regular', 'Minecraft', 'MinecraftFont', 'Courier New', Monaco, 'Lucida Console', monospace;
+    color: #f0f6fc;
+    font-size: 32px;
+    font-weight: normal;
+    /* Forzar el estilo pixelado en caso de que no cargue */
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: none;
+    font-smooth: never;
+}
+
+h2 {
+    color: #f0f6fc;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+h3 {
+    color: #58a6ff;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 /* Header */
 header {
     background-color: #161b22;
     border-bottom: 1px solid #30363d;
+    text-align: center;
+    padding: 20px;
+}
+
+header img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #30363d;
+    object-fit: cover;
 }
 
 /* Navegación */
 nav {
     background-color: #161b22;
     border-bottom: 1px solid #30363d;
+    padding: 15px;
+    text-align: center;
 }
 
 nav a {
     color: #7d8590;
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0 20px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
 }
 
 nav a:hover {
     color: #58a6ff;
+    background-color: #21262d;
 }
 
 /* Secciones */
 section {
     background-color: #0d1117;
-}
-
-/* Títulos */
-h1, h2 {
-    color: #f0f6fc;
-}
-
-h3 {
-    color: #58a6ff;
+    padding: 25px;
 }
 
 /* Tablas */
 table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
     background-color: #161b22;
+    border-radius: 6px;
     border: 1px solid #30363d;
+}
+
+caption {
+    font-weight: 600;
+    color: #f0f6fc;
+    margin-bottom: 15px;
+    text-align: left;
 }
 
 th {
     background-color: #21262d;
     color: #f0f6fc;
+    font-weight: 600;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #30363d;
 }
 
 td {
+    padding: 12px 16px;
     border-bottom: 1px solid #30363d;
+    color: #e6edf3;
+}
+
+tr:last-child td {
+    border-bottom: none;
 }
 
 tr:hover {
@@ -62,18 +130,51 @@ tr:hover {
 /* Enlaces */
 a {
     color: #58a6ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 a:visited {
     color: #bc8cff;
 }
 
+/* Listas */
+ul, ol {
+    padding-left: 20px;
+}
+
+li {
+    margin: 6px 0;
+    color: #e6edf3;
+}
+
 /* Footer */
 footer {
     background-color: #161b22;
     border-top: 1px solid #30363d;
+    padding: 20px;
+    text-align: center;
+}
+
+footer a {
+    margin: 0 8px;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+footer a:hover {
+    background-color: #21262d;
 }
 
 footer img {
     filter: invert(1) brightness(0.8);
+    transition: filter 0.2s ease;
+}
+
+footer a:hover img {
+    filter: invert(1) brightness(1);
 }
