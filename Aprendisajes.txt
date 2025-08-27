@@ -3,9 +3,6 @@ Creacion de Branches
 git checkout -b BRANCHNAME
 Cambio entre Branches
 git checkout BRANCHNAME
-<<<<<<< HEAD
-=======
 
 # Copy branch to a branch
 git checkout BRANCHNAME --
->>>>>>> CV
