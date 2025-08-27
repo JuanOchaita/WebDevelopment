@@ -1,15 +1,12 @@
-/* Paso 2: Colores + Fuentes */
+/* GitHub Dark Mode CV Styles */
 
-/* Importar fuente Minecraft - Usando el nombre exacto del sistema */
-@font-face {
-    font-family: 'MinecraftFont';
-    src: url('minecraft_font.ttf') format('truetype'),
-         url('minecraft_font.woff2') format('woff2'),
-         url('minecraft_font.woff') format('woff');
-    font-display: swap;
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* También intentar usar la fuente del sistema directamente */
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
     background-color: #0d1117;
@@ -18,36 +15,13 @@ body {
     font-size: 14px;
 }
 
-/* Título principal con fuente Minecraft - probando múltiples nombres */
-h1 {
-    font-family: 'Minecraft Regular', 'Minecraft', 'MinecraftFont', 'Courier New', Monaco, 'Lucida Console', monospace;
-    color: #f0f6fc;
-    font-size: 32px;
-    font-weight: normal;
-    /* Forzar el estilo pixelado en caso de que no cargue */
-    text-rendering: optimizeSpeed;
-    -webkit-font-smoothing: none;
-    font-smooth: never;
-}
-
-h2 {
-    color: #f0f6fc;
-    font-size: 24px;
-    font-weight: 600;
-}
-
-h3 {
-    color: #58a6ff;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-/* Header */
+/* Header styles */
 header {
     background-color: #161b22;
     border-bottom: 1px solid #30363d;
+    padding: 24px;
     text-align: center;
-    padding: 20px;
+    position: relative;
 }
 
 header img {
@@ -55,25 +29,36 @@ header img {
     height: 120px;
     border-radius: 50%;
     border: 3px solid #30363d;
+    margin-bottom: 16px;
     object-fit: cover;
 }
 
-/* Navegación */
+header h1 {
+    color: #f0f6fc;
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Navigation styles */
 nav {
     background-color: #161b22;
     border-bottom: 1px solid #30363d;
-    padding: 15px;
-    text-align: center;
+    padding: 16px 24px;
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 nav a {
     color: #7d8590;
     text-decoration: none;
     font-weight: 500;
-    margin: 0 20px;
     padding: 8px 16px;
     border-radius: 6px;
     transition: all 0.2s ease;
+    position: relative;
 }
 
 nav a:hover {
@@ -81,30 +66,60 @@ nav a:hover {
     background-color: #21262d;
 }
 
-/* Secciones */
-section {
-    background-color: #0d1117;
-    padding: 25px;
+nav a:active {
+    color: #f0f6fc;
+    background-color: #30363d;
 }
 
-/* Tablas */
+/* Section styles */
+section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    background-color: #0d1117;
+}
+
+section h2 {
+    color: #f0f6fc;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #30363d;
+}
+
+section h3 {
+    color: #58a6ff;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 24px 0 12px 0;
+}
+
+section p {
+    margin-bottom: 16px;
+    color: #e6edf3;
+}
+
+/* Table styles (GitHub-like) */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
+    margin: 24px 0;
     background-color: #161b22;
     border-radius: 6px;
+    overflow: hidden;
     border: 1px solid #30363d;
 }
 
 caption {
+    text-align: left;
     font-weight: 600;
     color: #f0f6fc;
-    margin-bottom: 15px;
-    text-align: left;
+    margin-bottom: 16px;
+    padding: 0;
 }
 
-th {
+thead th {
     background-color: #21262d;
     color: #f0f6fc;
     font-weight: 600;
@@ -113,21 +128,51 @@ th {
     border-bottom: 1px solid #30363d;
 }
 
-td {
+tbody td {
     padding: 12px 16px;
     border-bottom: 1px solid #30363d;
     color: #e6edf3;
 }
 
-tr:last-child td {
+tbody tr:last-child td {
     border-bottom: none;
 }
 
-tr:hover {
+tbody tr:hover {
     background-color: #21262d;
 }
 
-/* Enlaces */
+/* List styles */
+ul, ol {
+    margin: 16px 0;
+    padding-left: 24px;
+}
+
+li {
+    margin: 8px 0;
+    color: #e6edf3;
+}
+
+ul li {
+    position: relative;
+}
+
+ul li::marker {
+    color: #58a6ff;
+}
+
+ol li::marker {
+    color: #58a6ff;
+    font-weight: 600;
+}
+
+/* Nested lists */
+ul ul, ol ol, ul ol, ol ul {
+    margin: 8px 0;
+    padding-left: 20px;
+}
+
+/* Links */
 a {
     color: #58a6ff;
     text-decoration: none;
@@ -141,25 +186,29 @@ a:visited {
     color: #bc8cff;
 }
 
-/* Listas */
-ul, ol {
-    padding-left: 20px;
+/* Contact section specific styles */
+#contacto {
+    background-color: #161b22;
+    border-radius: 6px;
+    border: 1px solid #30363d;
+    margin-top: 24px;
 }
 
-li {
-    margin: 6px 0;
-    color: #e6edf3;
+#contacto p {
+    font-size: 16px;
 }
 
-/* Footer */
+/* Footer styles */
 footer {
     background-color: #161b22;
     border-top: 1px solid #30363d;
-    padding: 20px;
+    padding: 24px;
     text-align: center;
+    margin-top: 32px;
 }
 
 footer a {
+    display: inline-block;
     margin: 0 8px;
     padding: 8px;
     border-radius: 6px;
@@ -177,4 +226,97 @@ footer img {
 
 footer a:hover img {
     filter: invert(1) brightness(1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+    
+    section {
+        padding: 24px 16px;
+    }
+    
+    header {
+        padding: 16px;
+    }
+    
+    header h1 {
+        font-size: 28px;
+    }
+    
+    table {
+        font-size: 12px;
+    }
+    
+    thead th, tbody td {
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    header img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    header h1 {
+        font-size: 24px;
+    }
+    
+    section h2 {
+        font-size: 20px;
+    }
+    
+    table {
+        font-size: 11px;
+    }
+    
+    thead th, tbody td {
+        padding: 6px 8px;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus styles for better accessibility */
+a:focus, nav a:focus {
+    outline: 2px solid #58a6ff;
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+    
+    header, section, footer {
+        background-color: white;
+    }
+    
+    nav a {
+        color: black;
+    }
+    
+    table {
+        background-color: white;
+        border: 1px solid black;
+    }
+    
+    thead th {
+        background-color: #f0f0f0;
+        color: black;
+    }
 }
