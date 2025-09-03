@@ -173,8 +173,8 @@
 
         #contacto {
             background-color: #161b22;
-            border-radius: 6px;
-            border: 1px solid #30363d;
+            border-radius: 8px;
+            border: 1px solid #21262d;
             margin-top: 24px;
             padding: 24px;
             margin-bottom: 32px;
@@ -239,7 +239,7 @@
                 border: 1px solid #ccc !important;
             }
             
-            .nav-container, .footer-container {
+            .navbar, .footer-container {
                 display: none !important;
             }
             
@@ -280,7 +280,7 @@
             .nav-container .item { margin: 4px 0; }
             .minecraft-icon { width: 16px; height: 16px; }
             .minecraft-icon-large { width: 20px; height: 20px; }
-            .footer-container { padding: 20px 0; }
+            .footer-container { padding: 24px; }
         }
     </style>
 </head>
@@ -429,6 +429,58 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
+// Función para extraer color dominante y aplicarlo al header
+function applyDominantColorToHeader() {
+    const colorThief = new ColorThief();
+    const img = document.getElementById('profile-image');
+    const header = document.getElementById('main-header');
+    
+    function extractAndApplyColor() {
+        try {
+            // Extraer color dominante
+            const dominantColor = colorThief.getColor(img);
+            const [r, g, b] = dominantColor;
+            
+            // Crear una versión más oscura y con transparencia para el fondo
+            const darkR = Math.floor(r * 0.3);
+            const darkG = Math.floor(g * 0.3);
+            const darkB = Math.floor(b * 0.3);
+            
+            // Crear gradiente con el color dominante
+            const gradientBg = `linear-gradient(135deg, 
+                rgba(${darkR}, ${darkG}, ${darkB}, 0.8) 0%, 
+                rgba(${Math.floor(r * 0.2)}, ${Math.floor(g * 0.2)}, ${Math.floor(b * 0.2)}, 0.9) 50%, 
+                rgba(${Math.floor(r * 0.1)}, ${Math.floor(g * 0.1)}, ${Math.floor(b * 0.1)}, 1) 100%
+            ), #161b22`;
+            
+            // Aplicar el gradiente al header
+            header.style.background = gradientBg;
+            
+            // Ajustar el borde para que combine con el color
+            header.style.borderColor = `rgba(${r}, ${g}, ${b}, 0.3)`;
+            
+            console.log(`Color dominante aplicado: rgb(${r}, ${g}, ${b})`);
+            
+        } catch (error) {
+            console.log('No se pudo extraer el color dominante:', error);
+            // Mantener el estilo por defecto en caso de error
+        }
+    }
+    
+    // Si la imagen ya está cargada
+    if (img.complete && img.naturalHeight !== 0) {
+        extractAndApplyColor();
+    } else {
+        // Esperar a que se cargue la imagen
+        img.onload = extractAndApplyColor;
+        
+        // Fallback en caso de error de carga
+        img.onerror = function() {
+            console.log('Error cargando la imagen, manteniendo estilo por defecto');
+        };
+    }
+}
+
 function downloadPDF() {
     // Crear una nueva ventana para la impresión
     const printWindow = window.open('', '_blank');
@@ -456,6 +508,11 @@ function downloadPDF() {
         }, 500);
     };
 }
+
+// Ejecutar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', function() {
+    applyDominantColorToHeader();
+});
 </script>
 
 </body>
