@@ -638,14 +638,40 @@
     </div>
 </section>
 
-<section id="contacto">
-    <h2>
-        <img src="icons/map.png" alt="Map" class="minecraft-icon-large">
-        Contacto
-    </h2>
-    <p>¡Conectemos! Estoy siempre abierto a nuevas oportunidades y colaboraciones.</p>
-    <p><strong>Correo:</strong> <a href="mailto:juanom@ufm.edu">juanom@ufm.edu</a></p>
-    <p><strong>Ubicación:</strong> Guatemala City, Guatemala</p>
+<section id="contacto" class="grid-container">
+    <div class="accordion" id="contactoMainAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#contactoContent" aria-expanded="true" aria-controls="contactoContent">
+                    <img src="icons/map.png" alt="Map" class="minecraft-icon-large">
+                    Contacto
+                </button>
+            </h2>
+            <div id="contactoContent" class="accordion-collapse collapse show" data-bs-parent="#contactoMainAccordion">
+                <div class="accordion-body">
+                    <p class="grid-item-description">¡Conectemos! Estoy siempre abierto a nuevas oportunidades y colaboraciones.</p>
+                    <div class="grid-item-card d-flex align-items-center mb-3">
+                        <a href="mailto:juanom@ufm.edu" aria-label="Enviar correo a juanom@ufm.edu" class="me-2">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Gmail" class="minecraft-icon-large">
+                        </a>
+                        <a href="https://www.linkedin.com/in/juan-ochaita-207685334" target="_blank" aria-label="Ver perfil de LinkedIn" class="me-2">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" class="minecraft-icon-large">
+                        </a>
+                        <a href="https://github.com/JuanOchaita" target="_blank" aria-label="Ver perfil de GitHub">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" class="minecraft-icon-large">
+                        </a>
+                    </div>
+                    <div class="grid-item-card">
+                        <h3>
+                            <img src="icons/compass.png" alt="Compass" class="minecraft-icon">
+                            Ubicación
+                        </h3>
+                        <p>Guatemala City, Guatemala</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <footer class="container footer-container">
