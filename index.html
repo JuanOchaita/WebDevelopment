@@ -427,6 +427,32 @@
             }
         }
 
+        /* Estilos para el buscador */
+        .search-container {
+            grid-column: 1 / -1;
+            margin-bottom: 16px;
+        }
+
+        .search-container input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .search-container input[type="text"]::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        .search-container input[type="text"]:focus {
+            outline: none;
+            border-color: var(--link-color);
+        }
+
         /* MEDIA QUERIES PARA RESPONSIVE DESIGN */
         @media screen and (max-width: 1024px) {
             body { padding: 30px 15px; }
@@ -583,12 +609,15 @@
         <img src="icons/diamond_pickaxe.png" alt="Pickaxe" class="minecraft-icon-large">
         Proyectos & Habilidades
     </h2>
-    <div class="grid-item-card">
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Buscar proyectos y habilidades..." aria-label="Buscar en la sección de proyectos y habilidades">
+    </div>
+    <div class="grid-item-card" data-tags="habilidad python backend analisis datos">
         <h3>
             <img src="icons/command_block.png" alt="Command Block" class="minecraft-icon">
             Habilidades Técnicas
         </h3>
-        <ul>
+        <ul id="skillsList">
             <li><strong>Python</strong> - Desarrollo backend y análisis de datos</li>
             <li><strong>Gestión de proyectos</strong> - Metodologías ágiles y tradicionales</li>
             <li><strong>Resolución de problemas</strong> - Pensamiento analítico y lógico</li>
@@ -596,24 +625,24 @@
             <li><strong>Git/GitHub</strong> - Control de versiones y colaboración</li>
         </ul>
     </div>
-    <div class="grid-item-card">
+    <div class="grid-item-card" data-tags="hobbies interes peliculas ciencia ficcion videojuegos desarrollo indie gaming competitivo cocina tecnologia">
         <h3>
             <img src="icons/music_disc_ward.png" alt="Music Disc" class="minecraft-icon">
             Hobbies & Intereses
         </h3>
-        <ul>
+        <ul id="hobbiesList">
             <li><strong>Películas</strong> - Especialmente ciencia ficción y tecnología</li>
             <li><strong>Videojuegos</strong> - Desarrollo indie y gaming competitivo</li>
             <li><strong>Cocina</strong> - Experimentación con recetas internacionales</li>
             <li><strong>Tecnología</strong> - Últimas tendencias en desarrollo de software</li>
         </ul>
     </div>
-    <div class="grid-item-card">
+    <div class="grid-item-card" data-tags="proceso trabajo analisis proyecto investigacion distribucion ejecucion planificacion sprints desarrollo iterativo testing deployment">
         <h3>
             <img src="icons/compass.png" alt="Compass" class="minecraft-icon">
             Proceso de trabajo
         </h3>
-        <ol>
+        <ol id="processList">
             <li><strong>Análisis de proyecto</strong>
                 <ul>
                     <li>Definición de requerimientos</li>
@@ -758,20 +787,55 @@
         printWindow.document.write(htmlContent);
         printWindow.document.close();
         
-        printWindow.onload = function() {
-            printWindow.focus();
-            setTimeout(() => {
-                printWindow.print();
-                setTimeout(() => {
-                    printWindow.close();
-                }, 1000);
-            }, 500);
+        printWindow.onload = () => {
+            printWindow.print();
         };
     }
+    window.onload = updateGreeting;
+    setInterval(updateGreeting, 60000); // Actualiza el saludo cada minuto
 
-    document.addEventListener('DOMContentLoaded', function() {
-        updateGreeting();
-        setInterval(updateGreeting, 60000);
+    // Funcionalidad del buscador mejorada
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchInput = document.getElementById('searchInput');
+        const allCards = document.querySelectorAll('#proyectos .grid-item-card');
+
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+
+            if (searchTerm === '') {
+                // Si el campo de búsqueda está vacío, mostrar todo
+                allCards.forEach(card => {
+                    card.style.display = 'block';
+                    const listItems = card.querySelectorAll('li');
+                    listItems.forEach(li => li.style.display = 'block');
+                });
+                return;
+            }
+
+            // Recorrer cada tarjeta
+            allCards.forEach(card => {
+                let cardHasVisibleItems = false;
+                const listItems = card.querySelectorAll('li, strong'); // Buscar en li y strong
+
+                // Recorrer los sub-elementos de cada tarjeta (li y strong)
+                listItems.forEach(item => {
+                    const itemText = item.textContent.toLowerCase();
+                    if (itemText.includes(searchTerm)) {
+                        item.style.display = 'list-item'; // Mostrar el li si es una coincidencia
+                        cardHasVisibleItems = true;
+                    } else {
+                        item.style.display = 'none'; // Ocultar el li si no hay coincidencia
+                    }
+                });
+
+                // Si al menos un sub-elemento coincide, mostrar la tarjeta contenedora
+                if (cardHasVisibleItems) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
     });
 </script>
 
