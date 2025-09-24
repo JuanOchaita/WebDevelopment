@@ -1,0 +1,63 @@
+<section id="experiencia" class="grid-container">
+  <div class="accordion">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button 
+          class="accordion-button" 
+          [class.collapsed]="!mainAccordionOpen"
+          (click)="toggleMainAccordion()">
+          <img src="icons/diamond_sword.png" alt="Sword" class="minecraft-icon-large">
+          Experiencia Laboral
+        </button>
+      </h2>
+      <div class="accordion-collapse" [class.show]="mainAccordionOpen">
+        <div class="accordion-body">
+          <p class="grid-item-description">
+            Descripción: Historial de empleos y responsabilidades de Juan Ochaita en el campo del desarrollo de software y TI.
+          </p>
+          
+          <div class="accordion">
+            <div class="accordion-item" *ngFor="let exp of experienceData">
+              <h2 class="accordion-header">
+                <button 
+                  class="accordion-button" 
+                  [class.collapsed]="!exp.expanded"
+                  (click)="toggleExperience(exp.id)">
+                  <img [src]="exp.id === 'current' ? 'icons/diamond_sword.png' : 'icons/command_block.png'" 
+                       alt="Icon" class="minecraft-icon">
+                  {{ exp.company }} - {{ exp.position }} ({{ exp.period }})
+                </button>
+              </h2>
+              <div class="accordion-collapse" [class.show]="exp.expanded">
+                <div class="accordion-body">
+                  <strong>{{ exp.id === 'current' ? 'Responsabilidades:' : 'Actividades realizadas:' }}</strong>
+                  <ul>
+                    <li *ngFor="let responsibility of exp.responsibilities">{{ responsibility }}</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <table class="grid-item-table mt-4">
+            <caption>Resumen del historial profesional de Juan Ochaita</caption>
+            <thead>
+              <tr>
+                <th>Periodo</th>
+                <th>Empresa</th>
+                <th>Puesto</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let exp of experienceData">
+                <td>{{ exp.period }}</td>
+                <td>{{ exp.company }}</td>
+                <td>{{ exp.position }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

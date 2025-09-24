@@ -1,0 +1,26 @@
+<section id="educacion" class="grid-container">
+  <h2 class="grid-item-header">
+    <img src="icons/book.png" alt="Book" class="minecraft-icon-large">
+    Educación
+  </h2>
+  <p class="grid-item-description">
+    <strong>Descripción:</strong> Historial académico de Juan Ochaita, enfocado en tecnología y ciencias de la computación.
+  </p>
+  <table class="grid-item-table">
+    <caption>Formación académica de Juan Ochaita, desde bachillerato hasta estudios universitarios</caption>
+    <thead>
+      <tr>
+        <th>Año</th>
+        <th>Institución</th>
+        <th>Título obtenido</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let edu of educationData">
+        <td>{{ edu.year }}</td>
+        <td>{{ edu.institution }}</td>
+        <td>{{ edu.degree }}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

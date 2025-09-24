@@ -1,0 +1,26 @@
+@import '../styles/variables';
+@import '../styles/mixins';
+
+.app-container {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  font-size: 14px;
+  padding: 40px 20px;
+  max-width: 1800px;
+  margin: 0 auto;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &.light-mode {
+    // Las variables CSS se actualizan automáticamente
+  }
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+@include responsive-design;

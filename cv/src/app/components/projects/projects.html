@@ -1,0 +1,61 @@
+<section id="proyectos" class="grid-container">
+  <h2 class="grid-item-header">
+    <img src="icons/diamond_pickaxe.png" alt="Pickaxe" class="minecraft-icon-large">
+    Proyectos & Habilidades
+  </h2>
+  <div class="search-container">
+    <input 
+      type="text" 
+      placeholder="Buscar proyectos y habilidades..." 
+      (input)="onSearch($event)"
+      [value]="searchTerm">
+  </div>
+  
+  <div class="grid-item-card" 
+       *ngIf="shouldShowCard('technical')"
+       [style.display]="getCardDisplay('technical')">
+    <h3>
+      <img src="icons/command_block.png" alt="Command Block" class="minecraft-icon">
+      Habilidades Técnicas
+    </h3>
+    <ul>
+      <li *ngFor="let skill of filteredTechnicalSkills" 
+          [style.display]="skill.visible ? 'list-item' : 'none'">
+        <strong>{{ skill.name }}</strong> - {{ skill.description }}
+      </li>
+    </ul>
+  </div>
+  
+  <div class="grid-item-card" 
+       *ngIf="shouldShowCard('hobbies')"
+       [style.display]="getCardDisplay('hobbies')">
+    <h3>
+      <img src="icons/music_disc_ward.png" alt="Music Disc" class="minecraft-icon">
+      Hobbies & Intereses
+    </h3>
+    <ul>
+      <li *ngFor="let hobby of filteredHobbies" 
+          [style.display]="hobby.visible ? 'list-item' : 'none'">
+        <strong>{{ hobby.name }}</strong> - {{ hobby.description }}
+      </li>
+    </ul>
+  </div>
+  
+  <div class="grid-item-card" 
+       *ngIf="shouldShowCard('process')"
+       [style.display]="getCardDisplay('process')">
+    <h3>
+      <img src="icons/compass.png" alt="Compass" class="minecraft-icon">
+      Proceso de trabajo
+    </h3>
+    <ol>
+      <li *ngFor="let process of filteredProcesses" 
+          [style.display]="process.visible ? 'list-item' : 'none'">
+        <strong>{{ process.title }}</strong>
+        <ul>
+          <li *ngFor="let detail of process.details">{{ detail }}</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+</section>

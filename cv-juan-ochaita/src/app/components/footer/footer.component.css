@@ -1,0 +1,17 @@
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    height: auto;
+    padding: 24px 0;
+    background-color: #161b22;
+    border-radius: 6px;
+    border: 1px solid #30363d;
+}
+
+.footer-container .item img {
+    width: 30px;
+    height: auto;
+}

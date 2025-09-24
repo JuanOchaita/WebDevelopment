@@ -1,0 +1,231 @@
+<header>
+    <button id="theme-toggle-button" class="theme-toggle-button" (click)="toggleTheme()">
+        <img src="icons/clock.png" alt="Cambiar a modo claro/oscuro" class="icon" id="theme-icon">
+    </button>
+
+    <img src="images/Perfil.jpeg" alt="Foto de Juan Ochaita" class="profile-photo rounded-3">
+    <h1>JUAN OCHAITA</h1>
+    <p style="color: var(--text-secondary); margin-top: 8px; transition: color 0.3s ease;">Desarrollador Full Stack | Ingeniería en Ciencias de la Computación</p>
+    
+    <div class="splash-container">
+        <div class="minecraft-splash" id="greeting-message">
+            ¡Cargando saludo...!
+        </div>
+    </div>
+</header>
+
+<nav class="container nav-container">
+    <a class="item" href="#educacion">
+        <img src="icons/book.png" alt="Book" class="minecraft-icon">
+        Educación
+    </a>
+    <a class="item" href="#experiencia">
+        <img src="icons/diamond_sword.png" alt="Sword" class="minecraft-icon">
+        Experiencia Laboral
+    </a>
+    <a class="item" href="#proyectos">
+        <img src="icons/diamond_pickaxe.png" alt="Pickaxe" class="minecraft-icon">
+        Proyectos & Habilidades
+    </a>
+    <a class="item" href="#contacto">
+        <img src="icons/map.png" alt="Map" class="minecraft-icon">
+        Contacto
+    </a>
+</nav>
+
+<section id="educacion" class="grid-container">
+    <h2 class="grid-item-header">
+        <img src="icons/book.png" alt="Book" class="minecraft-icon-large">
+        Educación
+    </h2>
+    <p class="grid-item-description"><strong>Descripción:</strong> Historial académico de Juan Ochaita, enfocado en tecnología y ciencias de la computación.</p>
+    <table class="grid-item-table">
+        <caption>Formación académica de Juan Ochaita, desde bachillerato hasta estudios universitarios</caption>
+        <thead>
+            <tr><th>Año</th><th>Institución</th><th>Título obtenido</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>2020-2024</td><td>Universidad Francisco Marroquín</td><td>Ingeniería en Ciencias de la Computación</td></tr>
+            <tr><td>2018-2020</td><td>Colegio Internacional de Guatemala</td><td>Bachillerato en Ciencias y Letras</td></tr>
+        </tbody>
+    </table>
+</section>
+
+<section id="experiencia" class="grid-container">
+    <div class="accordion" id="experienciaMainAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#experienciaContent" aria-expanded="true" aria-controls="experienciaContent">
+                    <img src="icons/diamond_sword.png" alt="Sword" class="minecraft-icon-large">
+                    Experiencia Laboral
+                </button>
+            </h2>
+            <div id="experienciaContent" class="accordion-collapse collapse show" data-bs-parent="#experienciaMainAccordion">
+                <div class="accordion-body">
+                    <p class="grid-item-description">Descripción: Historial de empleos y responsabilidades de Juan Ochaita en el campo del desarrollo de software y TI.</p>
+                    
+                    <div class="accordion" id="experienciaAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <img src="icons/diamond_sword.png" alt="Sword" class="minecraft-icon">
+                                    TechSolutions Guatemala - Desarrollador Junior (2023-Presente)
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#experienciaAccordion">
+                                <div class="accordion-body">
+                                    <strong>Responsabilidades:</strong>
+                                    <ul>
+                                        <li>Desarrollo de aplicaciones web usando JavaScript y Python</li>
+                                        <li>Colaboración en proyectos de equipo usando metodologías ágiles</li>
+                                        <li>Mantenimiento y optimización de bases de datos</li>
+                                        <li>Testing y debugging de aplicaciones</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <img src="icons/command_block.png" alt="Command Block" class="minecraft-icon">
+                                    TechProblems S.A. - Asistente de Laboratorio (2022)
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#experienciaAccordion">
+                                <div class="accordion-body">
+                                    <strong>Actividades realizadas:</strong>
+                                    <ul>
+                                        <li>Soporte técnico a estudiantes en laboratorios de computación</li>
+                                        <li>Instalación y configuración de software educativo</li>
+                                        <li>Mantenimiento preventivo de equipos de cómputo</li>
+                                        <li>Documentación de problemas técnicos y sus soluciones</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="grid-item-table mt-4">
+                        <caption>Resumen del historial profesional de Juan Ochaita</caption>
+                        <thead>
+                            <tr><th>Periodo</th><th>Empresa</th><th>Puesto</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Enero 2023 - Presente</td><td>TechSolutions Guatemala</td><td>Desarrollador Junior</td></tr>
+                            <tr><td>Junio 2022 - Diciembre 2022</td><td>TechProblems S.A.</td><td>Asistente de Laboratorio de Computación</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="proyectos" class="grid-container">
+    <h2 class="grid-item-header">
+        <img src="icons/diamond_pickaxe.png" alt="Pickaxe" class="minecraft-icon-large">
+        Proyectos & Habilidades
+    </h2>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Buscar proyectos y habilidades..." aria-label="Buscar en la sección de proyectos y habilidades">
+    </div>
+    <div class="grid-item-card" data-tags="habilidad python backend analisis datos">
+        <h3>
+            <img src="icons/command_block.png" alt="Command Block" class="minecraft-icon">
+            Habilidades Técnicas
+        </h3>
+        <ul id="skillsList">
+            <li><strong>Python</strong> - Desarrollo backend y análisis de datos</li>
+            <li><strong>Gestión de proyectos</strong> - Metodologías ágiles y tradicionales</li>
+            <li><strong>Resolución de problemas</strong> - Pensamiento analítico y lógico</li>
+            <li><strong>JavaScript</strong> - Desarrollo frontend y Node.js</li>
+            <li><strong>Git/GitHub</strong> - Control de versiones y colaboración</li>
+        </ul>
+    </div>
+    <div class="grid-item-card" data-tags="hobbies interes peliculas ciencia ficcion videojuegos desarrollo indie gaming competitivo cocina tecnologia">
+        <h3>
+            <img src="icons/music_disc_ward.png" alt="Music Disc" class="minecraft-icon">
+            Hobbies & Intereses
+        </h3>
+        <ul id="hobbiesList">
+            <li><strong>Películas</strong> - Especialmente ciencia ficción y tecnología</li>
+            <li><strong>Videojuegos</strong> - Desarrollo indie y gaming competitivo</li>
+            <li><strong>Cocina</strong> - Experimentación con recetas internacionales</li>
+            <li><strong>Tecnología</strong> - Últimas tendencias en desarrollo de software</li>
+        </ul>
+    </div>
+    <div class="grid-item-card" data-tags="proceso trabajo analisis proyecto investigacion distribucion ejecucion planificacion sprints desarrollo iterativo testing deployment">
+        <h3>
+            <img src="icons/compass.png" alt="Compass" class="minecraft-icon">
+            Proceso de trabajo
+        </h3>
+        <ol id="processList">
+            <li><strong>Análisis de proyecto</strong>
+                <ul>
+                    <li>Definición de requerimientos</li>
+                    <li>Identificación de stakeholders</li>
+                </ul>
+            </li>
+            <li><strong>Investigación</strong>
+                <ul>
+                    <li>Investigación teórica</li>
+                    <li>Evaluación de herramientas disponibles</li>
+                    <li>Análisis de tecnologías emergentes</li>
+                </ul>
+            </li>
+            <li><strong>Distribución y ejecución de proyecto</strong>
+                <ul>
+                    <li>Planificación de sprints</li>
+                    <li>Desarrollo iterativo</li>
+                    <li>Testing y deployment</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<section id="contacto" class="grid-container">
+    <div class="accordion" id="contactoMainAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#contactoContent" aria-expanded="true" aria-controls="contactoContent">
+                    <img src="icons/map.png" alt="Map" class="minecraft-icon-large">
+                    Contacto
+                </button>
+            </h2>
+            <div id="contactoContent" class="accordion-collapse collapse show" data-bs-parent="#contactoMainAccordion">
+                <div class="accordion-body">
+                    <p class="grid-item-description">¡Conectemos! Estoy siempre abierto a nuevas oportunidades y colaboraciones.</p>
+                    <div class="grid-item-card d-flex align-items-center mb-3">
+                        <a href="mailto:juanom@ufm.edu" aria-label="Enviar correo a juanom@ufm.edu" class="me-2">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Gmail" class="minecraft-icon-large">
+                        </a>
+                        <a href="https://www.linkedin.com/in/juan-ochaita-207685334" target="_blank" aria-label="Ver perfil de LinkedIn" class="me-2">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn" class="minecraft-icon-large">
+                        </a>
+                        <a href="https://github.com/JuanOchaita" target="_blank" aria-label="Ver perfil de GitHub">
+                            <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" class="minecraft-icon-large">
+                        </a>
+                    </div>
+                    <div class="grid-item-card">
+                        <h3>
+                            <img src="icons/compass.png" alt="Compass" class="minecraft-icon">
+                            Ubicación
+                        </h3>
+                        <p>Guatemala City, Guatemala</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="container footer-container">
+    <a class="item" href="mailto:juanom@ufm.edu"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" alt="Gmail"></a>
+    <a class="item" href="https://www.linkedin.com/in/juan-ochaita-207685334" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" alt="LinkedIn"></a>
+    <a class="item" href="https://github.com/JuanOchaita" target="_blank"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub"></a>
+    <button class="item btn-download" onclick="downloadPDF()" title="Descargar CV en PDF">
+        <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/adobeacrobatreader.svg" alt="Descargar PDF">
+    </button>
+</footer>

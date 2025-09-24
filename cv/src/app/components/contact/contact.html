@@ -1,0 +1,43 @@
+<section id="contacto" class="grid-container">
+  <div class="accordion">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button 
+          class="accordion-button" 
+          [class.collapsed]="!accordionOpen"
+          (click)="toggleAccordion()">
+          <img src="icons/map.png" alt="Map" class="minecraft-icon-large">
+          Contacto
+        </button>
+      </h2>
+      <div class="accordion-collapse" [class.show]="accordionOpen">
+        <div class="accordion-body">
+          <p class="grid-item-description">
+            ¡Conectemos! Estoy siempre abierto a nuevas oportunidades y colaboraciones.
+          </p>
+          <div class="grid-item-card d-flex align-items-center mb-3">
+            <a [href]="'mailto:' + contactInfo.email" class="me-2">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" 
+                   alt="Gmail" class="minecraft-icon-large">
+            </a>
+            <a [href]="contactInfo.linkedin" target="_blank" class="me-2">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" 
+                   alt="LinkedIn" class="minecraft-icon-large">
+            </a>
+            <a [href]="contactInfo.github" target="_blank">
+              <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" 
+                   alt="GitHub" class="minecraft-icon-large">
+            </a>
+          </div>
+          <div class="grid-item-card">
+            <h3>
+              <img src="icons/compass.png" alt="Compass" class="minecraft-icon">
+              Ubicación
+            </h3>
+            <p>{{ contactInfo.location }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

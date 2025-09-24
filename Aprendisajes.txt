@@ -5,3 +5,5 @@ git checkout -b BRANCHNAME
 git checkout BRANCHNAME
 # Copy branch to a branch
 git checkout BRANCHNAME --
+# Merge de feaute a actual branch
+git merge feature
