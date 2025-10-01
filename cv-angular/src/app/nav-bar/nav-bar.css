@@ -1,0 +1,30 @@
+/* Estilo del contenedor principal: Distribuye los elementos en línea */
+.nav-container {
+    display: flex; /* Crucial para alinear los elementos NavItem */
+    justify-content: center; /* Centra los elementos */
+    background-color: var(--bg-secondary); /* Usa tu color de fondo Dark Mode */
+    border: 2px solid var(--border-primary); 
+    padding: 10px;
+    border-radius: 6px;
+}
+
+/* Estilo del enlace individual: Aplica el espaciado */
+.item {
+    /* Esto se aplica al <a> dentro de NavItem */
+    padding: 8px 12px;
+    margin: 0 10px; /* ¡Ajusta este margen para la separación! */
+    text-decoration: none;
+    color: var(--text-color);
+    transition: background-color 0.2s;
+    /* ... otros estilos ... */
+}
+
+/* Estilo para los iconos (ya lo tenías) */
+.minecraft-icon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    /* ... otros estilos de icono ... */
+}
