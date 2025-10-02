@@ -1,33 +1,53 @@
+
+
+<header>
+    <button id="theme-toggle-button" class="theme-toggle-button" (click)="toggleTheme()">
+        <img src="/icons/clock.png" [attr.alt]="themeIconAlt" class="icon" id="theme-icon">
+    </button>
+
+    <img src="/images/Fake.jpg" alt="Juan Ochaita's Photo" class="profile-photo rounded-3">
+    <h1>JUAN OCHAITA</h1>
+    <p style="color: var(--text-secondary); margin-top: 8px; transition: color 0.3s ease;">Computer Science Engineering</p>
+    
+    <div class="splash-container">
+        <div class="minecraft-splash" id="greeting-message">
+            {{ greetingMessage }}
+        </div>
+    </div>
+</header>
+
+
 <app-nav-bar>
     <app-nav-item 
         href="#educacion" 
-        iconSrc="book.png" 
+        iconSrc="/icons/book.png" 
         text="Educación" 
         altText="Book"
     ></app-nav-item>
     
     <app-nav-item 
         href="#experiencia" 
-        iconSrc="diamond_sword.png" 
+        iconSrc="/icons/diamond_sword.png" 
         text="Experiencia Laboral" 
         altText="Sword"
     ></app-nav-item>
     
     <app-nav-item 
         href="#proyectos" 
-        iconSrc="diamond_pickaxe.png" 
+        iconSrc="/icons/diamond_pickaxe.png" 
         text="Proyectos & Habilidades" 
         altText="Pickaxe"
     ></app-nav-item>
     
     <app-nav-item 
         href="#contacto" 
-        iconSrc="map.png" 
+        iconSrc="/icons/map.png" 
         text="Contacto" 
         altText="Map"
     ></app-nav-item>
     
 </app-nav-bar>
+
 <app-nav-bar>
     <app-nav-item 
         href="mailto:juanom@ufm.edu" 

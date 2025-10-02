@@ -3,16 +3,17 @@
     display: flex; /* Crucial para alinear los elementos NavItem */
     justify-content: center; /* Centra los elementos */
     background-color: var(--bg-secondary); /* Usa tu color de fondo Dark Mode */
-    border: 2px solid var(--border-primary); 
+    border-bottom: 1px solid var(--border-color); 
     padding: 10px;
     border-radius: 6px;
+    margin-bottom: 10px; 
 }
 
 /* Estilo del enlace individual: Aplica el espaciado */
 .item {
     /* Esto se aplica al <a> dentro de NavItem */
-    padding: 8px 12px;
-    margin: 0 10px; /* ¡Ajusta este margen para la separación! */
+    padding: 12px 12px;
+    margin: 5 5px; /* ¡Ajusta este margen para la separación! */
     text-decoration: none;
     color: var(--text-color);
     transition: background-color 0.2s;
