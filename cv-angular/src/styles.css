@@ -364,9 +364,6 @@ a:visited { color: var(--link-visited-color); }
 
 /* Contact section */
 #contacto {
-    background-color: var(--bg-secondary);
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
     margin-top: 24px;
     padding: 24px;
     margin-bottom: 32px;
