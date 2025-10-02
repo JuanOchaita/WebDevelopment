@@ -1,11 +1,12 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { NavBar } from './nav-bar/nav-bar';
 import { NavItem } from './nav-bar/nav-item/nav-item';
+import { MinecraftCardComponent } from './information-block/information-block';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [NavBar, NavItem], 
+  imports: [NavBar, NavItem, MinecraftCardComponent], 
   templateUrl: './app.html',
 })
 
