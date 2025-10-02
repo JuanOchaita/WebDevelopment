@@ -1,0 +1,47 @@
+
+.card-container {
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-primary);
+  padding: 15px 15px 15px 25px;
+  margin: 16px 0; 
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-header {
+  display: flex; 
+  align-items: center;
+  font-family: 'Minecraft', monospace;
+  color: var(--text-secondary);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+  margin-top: 5;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.minecraft-icon-large {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+}
+
+.card-content-wrapper {
+  width: 100%;
+}
+
+.card-content-wrapper ::ng-deep table,
+.card-content-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+  background-color: var(--border-color); 
+}
+
+.card-content-wrapper ::ng-deep th,
+.card-content-wrapper ::ng-deep td {
+    border: 1px solid #404040;
+    padding: 8px;
+    text-align: left;
+}

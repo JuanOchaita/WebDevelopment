@@ -1,10 +1,10 @@
-<p>information-block works!</p>
- <section id="{{ cardId }}" class="grid-container">
-  <h2 class="grid-item-header">
+<section id="{{ cardId }}" class="card-container"> <h2 class="card-header">
     <img src="{{ iconSrc }}" alt="{{ iconAlt }}" class="minecraft-icon-large">
     {{ title }}
   </h2>
 
-  <ng-content></ng-content>
-
+  <div class="card-content-wrapper">
+    <ng-content></ng-content>
+  </div>
+  
 </section>
