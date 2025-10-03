@@ -1,0 +1,65 @@
+/*
+ * 1. Estilos para el host (la etiqueta <app-card-list>)
+ * Se usa 'display: block' para que los márgenes verticales funcionen.
+ */
+:host {
+    display: block; 
+    /* Margen de 5px arriba y abajo, y 0px a los lados */
+    margin: 10px 0; 
+}
+
+
+/*
+ * 2. Estilos para la tarjeta contenedora (.grid-item-card)
+ */
+.grid-item-card {
+    /* Fondo oscuro similar al de la imagen */
+    background-color: var(--bg-secondary);
+    border: 1px solid #3a4049;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #e0e0e0;
+}
+
+
+/*
+ * 3. Estilos para el encabezado (h3)
+ */
+.grid-item-card h3 {
+    font-size: 1.5em;
+    /* Color de texto azul claro */
+    color: #8cacec; 
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+
+/*
+ * 4. Estilos para el ícono (img.minecraft-icon)
+ */
+.minecraft-icon {
+    width: 24px; 
+    height: 24px;
+    margin-right: 10px;
+    /* Para mantener el aspecto pixelado de los íconos tipo Minecraft */
+    image-rendering: pixelated; 
+}
+
+
+/*
+ * 5. Estilos para listas (ul/li) que se proyecten con ng-content
+ */
+.grid-item-card ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.grid-item-card li {
+    margin-bottom: 8px;
+    font-size: 1.05em;
+}
