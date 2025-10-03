@@ -24,9 +24,18 @@
                 "input": "public"
               }
             ],
+            // INICIO DE CORRECCIONES PARA BOOTSTRAP
             "styles": [
+              // 1. Cargamos el CSS de Bootstrap PRIMERO.
+              "node_modules/bootstrap/dist/css/bootstrap.min.css", 
+              // 2. Cargamos tus estilos globales DESPUÉS, para que sobrescriban a Bootstrap.
               "src/styles.css"
+            ],
+            "scripts": [
+              // 3. Cargamos el JavaScript de Bootstrap (NECESARIO para el acordeón y modales).
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
+            // FIN DE CORRECCIONES PARA BOOTSTRAP
           },
           "configurations": {
             "production": {

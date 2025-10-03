@@ -5,7 +5,7 @@ import { NavItem } from './nav-item/nav-item'; // Importa el componente auxiliar
   selector: 'app-nav-bar', 
   standalone: true,
   // Importa NavItem para que se pueda usar dentro del contenido proyectado
-  imports: [NavItem], 
+  imports: [], 
   templateUrl: './nav-bar.html',
   styleUrls: ['./nav-bar.css'],
 })

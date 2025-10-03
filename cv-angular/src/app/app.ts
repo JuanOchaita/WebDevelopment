@@ -1,148 +1,96 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // <-- NECESARIO PARA [(ngModel)]
-import { NavBar } from './nav-bar/nav-bar';
-import { NavItem } from './nav-bar/nav-item/nav-item';
-import { MinecraftCardComponent } from './information-block/information-block';
-import { CardListComponent } from './card-list/card-list';
-
-// 1. Definición de la estructura de datos para una tarjeta
-interface CardData {
-  id: string; 
-  src: string;
-  alt: string;
-  iconClass: string;
-  // Texto clave para la búsqueda (Título + Descripciones)
-  searchableText: string; 
-  items: { title: string; description: string }[];
-}
+import { Component, OnInit, OnDestroy } from '@angular/core';
+// ¡Añadida la importación del componente!
+import { InformationAccordionComponent } from './information-accordion/information-accordion'; 
+import { CommonModule } from '@angular/common'; // Necesario para directivas comunes (if, for)
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  // 2. Agregar FormsModule a los imports
-  imports: [NavBar, NavItem, MinecraftCardComponent, CardListComponent, FormsModule], 
   templateUrl: './app.html',
+  styleUrls: ['./app.css'],
+  // ⭐️ CLAVE: Se declara como componente Standalone y se importa el componente hijo.
+  standalone: true, 
+  imports: [
+    CommonModule, 
+    InformationAccordionComponent // <-- ¡Aquí está!
+  ] 
 })
-
-export class App implements OnInit {
-  title = 'Mi CV Angular';
+export class App implements OnInit, OnDestroy {
   
-  isLightMode: boolean = false;
-  themeIconAlt: string = 'Switch to light mode';
-  greetingMessage: string = 'Loading greeting...!';
+  title = 'Componente Acordeón CV';
+  greetingMessage: string = '';
+  themeIconAlt: string = 'Cambiar a modo claro'; 
 
-  // --- Propiedades de Búsqueda y Datos ---
-  searchText: string = ''; 
-  allCards: CardData[] = []; 
-  filteredCards: CardData[] = []; 
-  // ---------------------------------------
-
-  constructor(private renderer: Renderer2) { } 
+  private greetingInterval: any;
 
   ngOnInit(): void {
     this.loadTheme();
-    this.setGreetingMessage();
-    
-    // Inicializar los datos de las tarjetas y los resultados filtrados
-    this.allCards = this.getInitialCardData();
-    this.filteredCards = this.allCards;
+    this.updateGreeting();
+    this.greetingInterval = setInterval(() => this.updateGreeting(), 60000);
   }
 
-  // 3. Método para la lógica de filtrado
-  filterCards(): void {
-    const term = this.searchText.toLowerCase().trim();
-
-    if (!term) {
-      // Si no hay texto, mostrar todas las tarjetas
-      this.filteredCards = this.allCards;
-      return;
+  ngOnDestroy(): void {
+    if (this.greetingInterval) {
+      clearInterval(this.greetingInterval);
     }
-
-    // Filtrar la lista maestra por el texto de búsqueda
-    this.filteredCards = this.allCards.filter(card => {
-      return card.searchableText.toLowerCase().includes(term);
-    });
   }
 
-  // Función para simular/cargar los datos iniciales de las tarjetas
-  private getInitialCardData(): CardData[] {
-    return [
-      {
-        id: 'python-backend',
-        src: '/icons/command_block.png',
-        alt: 'Command Block',
-        iconClass: 'minecraft-icon',
-        searchableText: 'Python Desarrollo backend y análisis de datos Data Science',
-        items: [
-          { title: 'Python', description: 'Desarrollo backend y análisis de datos' }
-        ]
-      },
-      {
-        id: 'git-version',
-        src: '/icons/redstone.png',
-        alt: 'Redstone Dust',
-        iconClass: 'minecraft-icon',
-        searchableText: 'Git GitHub Control de versiones y colaboración',
-        items: [
-          { title: 'Git/GitHub', description: 'Control de versiones y colaboración' }
-        ]
-      },
-      // Puedes agregar más tarjetas aquí, asegurándote de actualizar 'searchableText'
-    ];
+  /**
+   * Alterna entre modo claro y oscuro.
+   */
+  toggleTheme(): void {
+    const isLightMode = document.body.classList.contains('light-mode');
+    
+    if (isLightMode) {
+      document.body.classList.remove('light-mode');
+      localStorage.setItem('theme', 'dark');
+      this.themeIconAlt = 'Cambiar a modo claro';
+    } else {
+      document.body.classList.add('light-mode');
+      localStorage.setItem('theme', 'light');
+      this.themeIconAlt = 'Cambiar a modo oscuro';
+    }
   }
-  // -----------------------------------------------------------------------
 
-
+  /**
+   * Carga el tema guardado o el preferido por el sistema.
+   */
   loadTheme(): void {
     const savedTheme = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme === 'light') {
-      this.isLightMode = true;
-    } else if (savedTheme === 'dark' || prefersDark) {
-      this.isLightMode = false;
-    } else {
-      this.isLightMode = false;
-    }
-
-    this.applyTheme(this.isLightMode);
-  }
-
-  applyTheme(isLight: boolean): void {
-    if (isLight) {
-      this.renderer.addClass(document.body, 'light-mode');
-      this.themeIconAlt = 'Switch to dark mode';
-    } else {
-      this.renderer.removeClass(document.body, 'light-mode');
-      this.themeIconAlt = 'Switch to light mode';
-    }
-    this.isLightMode = isLight;
-  }
-
-  toggleTheme(): void {
-    this.isLightMode = !this.isLightMode;
-    this.applyTheme(this.isLightMode);
     
-    const themeToSave = this.isLightMode ? 'light' : 'dark';
-    localStorage.setItem('theme', themeToSave);
+    if (savedTheme === 'light') {
+      document.body.classList.add('light-mode');
+      this.themeIconAlt = 'Cambiar a modo oscuro';
+    } else if (savedTheme === 'dark' || prefersDark) {
+      document.body.classList.remove('light-mode');
+      this.themeIconAlt = 'Cambiar a modo claro';
+    } else {
+      document.body.classList.remove('light-mode');
+      this.themeIconAlt = 'Cambiar a modo claro';
+    }
   }
   
+  /**
+   * Determina el saludo según la hora del día.
+   */
   getTimeBasedGreeting(): string {
-    const now = new Date();
-    const hour = now.getHours();
+    const hour = new Date().getHours();
     
-    if (hour >= 0 && hour < 6) {
-      return "What are you doing up at this hour??";
-    } else if (hour >= 6 && hour < 12) {
-      return "Good morning!";
+    if (hour >= 6 && hour < 12) {
+      return "¡Buenos días!";
     } else if (hour >= 12 && hour < 18) {
-      return "Good afternoon!";
+      return "¡Buenas tardes!";
     } else {
-      return "Good evening!";
+      return "¡Buenas noches!";
     }
   }
 
-  setGreetingMessage(): void {
+  updateGreeting(): void {
     this.greetingMessage = this.getTimeBasedGreeting();
+  }
+  
+  // Función placeholder para la impresión PDF
+  downloadPDF(): void {
+    window.print();
   }
 }
