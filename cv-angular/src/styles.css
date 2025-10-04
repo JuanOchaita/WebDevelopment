@@ -312,37 +312,6 @@ header h1 {
     transition: color 0.3s ease;
 }
 
-/* Estilos personalizados para el accordion de Bootstrap */
-.accordion-button {
-    background-color: var(--accordion-button-bg) !important;
-    color: var(--text-primary) !important;
-    border: 1px solid var(--border-color) !important;
-    font-family: 'Minecraft', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
-
-.accordion-button:not(.collapsed) {
-    background-color: var(--accordion-button-active-bg) !important;
-    color: var(--accordion-button-active-color) !important;
-    border-color: var(--accordion-button-active-color) !important;
-}
-
-.accordion-button:focus {
-    box-shadow: 0 0 0 0.25rem var(--link-color) !important;
-}
-
-.accordion-body {
-    background-color: var(--accordion-body-bg) !important;
-    color: var(--text-primary) !important;
-    border: 1px solid var(--border-color) !important;
-    border-top: none !important;
-}
-
-.accordion-item {
-    background-color: transparent !important;
-    border: none !important;
-    margin-bottom: 8px;
-}
 
 /* Table styles internos */
 caption { text-align: left; font-weight: 600; color: var(--text-secondary); margin-bottom: 16px; }

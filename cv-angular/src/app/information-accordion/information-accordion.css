@@ -8,7 +8,6 @@
     background-color: var(--bg-tertiary); /* Usa las variables CSS globales */
     padding: 24px;
     border-radius: 8px;
-    border: 1px solid var(--border-color);
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -24,7 +23,8 @@
 .accordion-button:not(.collapsed) {
     background-color: var(--accordion-button-active-bg) !important;
     color: var(--accordion-button-active-color) !important;
-    border-color: var(--accordion-button-active-color) !important;
+    border-width: 1px 1px 1px 1px !important; 
+    border-color: var(--accordion-button-active-bg) !important;
 }
 
 .accordion-button:focus {
@@ -34,7 +34,6 @@
 .accordion-body {
     background-color: var(--accordion-body-bg) !important;
     color: var(--text-primary) !important;
-    border: 1px solid var(--border-color) !important;
     border-top: none !important;
 }
 
@@ -55,4 +54,36 @@
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
     transition: filter 0.3s ease;
+}
+
+/*
+ * =======================================================
+ * CÓDIGO AÑADIDO: CAMBIO DE COLOR DEL ICONO DEL ACORDEÓN
+ * =======================================================
+ */
+
+/* 1. Icono ROJO cuando está COLAPSADO (cerrado) */
+.accordion-button.collapsed::after {
+    /* fill='%23ff0000' es el código para el ROJO */
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ff0000'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+    
+    /* Propiedades de visualización para corregir la repetición y asegurar el icono único */
+    background-repeat: no-repeat !important; 
+    background-position: right 1.25rem center !important;
+    background-size: 1.25rem !important;
+    transform: rotate(0deg) !important;
+}
+
+/* 2. Icono AMARILLO cuando NO está COLAPSADO (abierto) */
+.accordion-button:not(.collapsed)::after {
+    /* fill='%23ffff00' es el código para el AMARILLO */
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffff00'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+    
+    /* Propiedades de visualización para corregir la repetición y asegurar el icono único */
+    background-repeat: no-repeat !important;
+    background-position: right 1.25rem center !important;
+    background-size: 1.25rem !important;
+
+    /* Rotación para apuntar hacia arriba */
+    transform: rotate(-180deg) !important;
 }

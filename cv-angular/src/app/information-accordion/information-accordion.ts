@@ -12,7 +12,7 @@ export class InformationAccordionComponent implements OnInit {
   // Propiedad para el texto del título (puede ser un @Input() si quieres que sea dinámico)
   title: string = 'Contacto';
   // Propiedad para la ruta de la imagen del icono
-  iconPath: string = 'assets/icons/map.png'; 
+  iconPath: string = './icons/map.png'; 
 
   constructor() { }
 
