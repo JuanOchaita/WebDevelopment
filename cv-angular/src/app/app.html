@@ -74,32 +74,7 @@
     iconSrc="/icons/diamond_pickaxe.png" 
     iconAlt="Diamond Icon"
     title="Projects & Skills">
-    
-    <div class="search-container">
-        <input 
-            type="text" 
-            id="searchInput" 
-            placeholder="Buscar proyectos y habilidades..." 
-            aria-label="Buscar en la sección de proyectos y habilidades"
-            [(ngModel)]="searchText"
-            (ngModelChange)="filterCards()"
-        >
-    </div>
-
-    <app-card-list 
-        *ngFor="let card of filteredCards"
-        [src]="card.src" 
-        [alt]="card.alt" 
-        [iconClass]="card.iconClass"
-    >
-        <ul>
-            <li *ngFor="let item of card.items">
-                <strong>{{ item.title }}</strong> - {{ item.description }}
-            </li>
-        </ul>
-    </app-card-list>
-
-    
+    <router-outlet></router-outlet>
 
 </app-minecraft-card>
 

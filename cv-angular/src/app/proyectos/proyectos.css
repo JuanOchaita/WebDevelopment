@@ -1,0 +1,467 @@
+.proyectos-container {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--text-secondary);
+  font-weight: 700;
+  font-family: 'Minecraft', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  transition: color 0.3s ease;
+}
+
+/* Buscador */
+.search-container {
+  max-width: 100%; /* Cambiado de 800px a 100% */
+  margin: 0 0 2rem 0; /* Eliminado el auto para centrado */
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.search-box:focus-within {
+  border-color: var(--link-color);
+  box-shadow: 0 4px 12px rgba(88, 166, 255, 0.3);
+}
+
+body.light-mode .search-box:focus-within {
+  box-shadow: 0 4px 12px rgba(3, 102, 214, 0.3);
+}
+
+.search-icon {
+  color: var(--text-secondary);
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+  transition: color 0.3s ease;
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: var(--text-primary);
+  background: transparent;
+  transition: color 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+.clear-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  margin-left: 0.5rem;
+}
+
+.clear-btn:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.search-info {
+  text-align: center;
+  margin-top: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.search-info strong {
+  color: var(--link-color);
+  font-weight: 600;
+}
+/* Loading */
+.loading {
+  text-align: center;
+  padding: 3rem;
+}
+
+.spinner {
+  border: 4px solid var(--bg-tertiary);
+  border-top: 4px solid var(--link-color);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+/* Error */
+.error {
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--bg-secondary);
+  border: 2px solid #e74c3c;
+  border-radius: 12px;
+  margin: 2rem 0;
+  transition: background-color 0.3s ease;
+}
+
+.error p {
+  color: #e74c3c;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Grid de Repositorios */
+.repos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.repo-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.repo-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px var(--shadow-color);
+  border-color: var(--link-color);
+}
+
+.repo-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--link-color);
+  font-weight: 600;
+  font-family: 'Minecraft', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.description {
+  color: var(--text-primary);
+  min-height: 60px;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  flex-grow: 1;
+  transition: color 0.3s ease;
+}
+
+/* Estadísticas */
+.repo-stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+  transition: color 0.3s ease;
+}
+
+.repo-stats span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.language {
+  font-weight: 600;
+  color: var(--link-color);
+  transition: color 0.3s ease;
+}
+
+/* Enlaces */
+.repo-links {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+  flex: 1;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background-color: var(--link-color);
+  color: var(--bg-primary);
+  border: 2px solid var(--link-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--link-visited-color);
+  border-color: var(--link-visited-color);
+  transform: scale(1.02);
+}
+
+.btn-secondary {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: var(--border-color);
+  transform: scale(1.02);
+}
+
+/* Topics */
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.topic-tag {
+  background-color: var(--bg-tertiary);
+  color: var(--link-color);
+  padding: 0.3rem 0.8rem;
+  border-radius: 16px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.topic-tag:hover {
+  background-color: var(--link-color);
+  color: var(--bg-primary);
+  transform: scale(1.05);
+}
+
+/* Sin resultados */
+.no-results {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  margin-top: 2rem;
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.no-results svg {
+  margin-bottom: 1.5rem;
+  opacity: 0.5;
+}
+
+.no-results svg circle,
+.no-results svg path {
+  stroke: var(--text-secondary);
+  transition: stroke 0.3s ease;
+}
+
+.no-results h3 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-family: 'Minecraft', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.no-results p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.no-results strong {
+  color: var(--link-color);
+}
+
+.btn-clear-search {
+  background-color: var(--link-color);
+  color: var(--bg-primary);
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-clear-search:hover {
+  background-color: var(--link-visited-color);
+  transform: scale(1.05);
+}
+
+/* Sin repositorios */
+.no-repos {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--bg-secondary);
+  border-radius: 12px;
+  margin-top: 2rem;
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.no-repos p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+/* Responsive */
+@media screen and (max-width: 1024px) {
+  .proyectos-container {
+    padding: 1.5rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .repos-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .proyectos-container {
+    padding: 1rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .search-input {
+    font-size: 0.9rem;
+  }
+
+  .search-input::placeholder {
+    font-size: 0.85rem;
+  }
+
+  .repos-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .repo-links {
+    flex-direction: column;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  .no-results {
+    padding: 3rem 1.5rem;
+  }
+
+  .no-results h3 {
+    font-size: 1.3rem;
+  }
+
+  .no-results p {
+    font-size: 1rem;
+  }
+}
+
+/* Animación de entrada para las cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.repo-card {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.repo-card:nth-child(1) { animation-delay: 0.05s; }
+.repo-card:nth-child(2) { animation-delay: 0.1s; }
+.repo-card:nth-child(3) { animation-delay: 0.15s; }
+.repo-card:nth-child(4) { animation-delay: 0.2s; }
+.repo-card:nth-child(5) { animation-delay: 0.25s; }
+.repo-card:nth-child(6) { animation-delay: 0.3s; }
+.repo-card:nth-child(7) { animation-delay: 0.35s; }
+.repo-card:nth-child(8) { animation-delay: 0.4s; }
+.repo-card:nth-child(9) { animation-delay: 0.45s; }
+
+/* Estilos para impresión PDF */
+@media print {
+  .proyectos-container {
+    background-color: white !important;
+  }
+
+  .search-container,
+  .search-info {
+    display: none !important;
+  }
+
+  .repo-card {
+    background-color: white !important;
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  .repo-card h3 {
+    color: black !important;
+  }
+
+  .description,
+  .repo-stats,
+  .topic-tag {
+    color: black !important;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    display: none !important;
+  }
+}

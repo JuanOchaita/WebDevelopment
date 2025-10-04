@@ -1,0 +1,99 @@
+<div class="proyectos-container">
+  
+  <!-- Buscador -->
+  <div class="search-container">
+    <div class="search-box">
+      <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M19 19L14.65 14.65" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      
+      <input 
+        type="text" 
+        class="search-input"
+        [(ngModel)]="searchTerm"
+        (input)="filterRepos()"
+        placeholder="Buscar por nombre, descripción, lenguaje o tecnología..."
+      >
+      
+      <button 
+        *ngIf="searchTerm" 
+        class="clear-btn"
+        (click)="clearSearch()"
+        aria-label="Limpiar búsqueda"
+      >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="search-info" *ngIf="!loading && !error">
+      
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="loading" class="loading">
+    <div class="spinner"></div>
+    <p>Cargando repositorios...</p>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <!-- Lista de Repositorios -->
+  <div *ngIf="!loading && !error && filteredRepos.length > 0" class="repos-grid">
+    <div *ngFor="let repo of filteredRepos" class="repo-card">
+      <h3>{{ repo.name }}</h3>
+      <p class="description">{{ repo.description || 'Sin descripción' }}</p>
+      
+      <div class="repo-stats">
+        <span *ngIf="repo.language" class="language">
+          💻 {{ repo.language }}
+        </span>
+        <span class="stars">
+          ⭐ {{ repo.stargazers_count }}
+        </span>
+        <span class="forks">
+          🔱 {{ repo.forks_count }}
+        </span>
+      </div>
+
+      <div class="repo-links">
+        <a [href]="repo.html_url" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          Ver en GitHub
+        </a>
+        <a *ngIf="repo.homepage" [href]="repo.homepage" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          Demo
+        </a>
+      </div>
+
+      <div *ngIf="repo.topics && repo.topics.length > 0" class="topics">
+        <span *ngFor="let topic of repo.topics" class="topic-tag">
+          {{ topic }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sin resultados de búsqueda -->
+  <div *ngIf="!loading && !error && filteredRepos.length === 0 && searchTerm" class="no-results">
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="32" r="30" stroke="#e1e4e8" stroke-width="4"/>
+      <path d="M32 20V32M32 44H32.02" stroke="#586069" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <h3>No se encontraron resultados</h3>
+    <p>No hay repositorios que coincidan con "<strong>{{ searchTerm }}</strong>"</p>
+    <button class="btn-clear-search" (click)="clearSearch()">
+      Limpiar búsqueda
+    </button>
+  </div>
+
+  <!-- Sin repositorios -->
+  <div *ngIf="!loading && !error && repos.length === 0" class="no-repos">
+    <p>No se encontraron repositorios</p>
+  </div>
+</div>
