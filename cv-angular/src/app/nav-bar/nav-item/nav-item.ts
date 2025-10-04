@@ -1,22 +1,35 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-nav-item', // Etiqueta que usaremos en app.html
+  selector: 'app-nav-item',
   standalone: true,
-  // El template contiene el enlace <a> que ya tiene la clase 'item' para el espaciado
   template: `
-    <a class="item" [href]="href">
+    <a class="item" 
+       [href]="isExternalLink ? href : 'javascript:void(0)'" 
+       (click)="handleClick($event)"
+       [target]="isExternalLink ? '_blank' : '_self'">
       <img [src]="iconSrc" [alt]="altText" class="minecraft-icon">
       {{ text }}
     </a>
   `,
-  // Importa los estilos de la barra de navegación para que se apliquen al enlace <a>
   styleUrls: ['../nav-bar.css'] 
 })
 export class NavItem {
-  // Parámetros de entrada que se configuran en app.html
   @Input() href: string = '#';
   @Input() iconSrc: string = '';
   @Input() text: string = '';
-  @Input() altText: string = 'Icono de navegación'; 
+  @Input() altText: string = 'Icono de navegación';
+  @Output() navClick = new EventEmitter<string>();
+
+  get isExternalLink(): boolean {
+    return this.href.startsWith('http') || this.href.startsWith('mailto:');
+  }
+
+  handleClick(event: Event): void {
+    if (!this.isExternalLink && this.href.startsWith('#')) {
+      event.preventDefault();
+      const sectionId = this.href.substring(1); // Elimina el '#'
+      this.navClick.emit(sectionId);
+    }
+  }
 }

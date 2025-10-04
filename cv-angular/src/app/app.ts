@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ViewportScroller } from '@angular/common';
 
 // Componentes importados
 import { NavBar } from './nav-bar/nav-bar';
@@ -54,7 +55,10 @@ export class AppComponent implements OnInit, OnDestroy {
   allCards: CardData[] = [];
   filteredCards: CardData[] = [];
 
-  constructor(private renderer: Renderer2) {}
+  constructor(
+    private renderer: Renderer2,
+    private viewportScroller: ViewportScroller
+  ) {}
 
   ngOnInit(): void {
     this.loadTheme();
@@ -68,6 +72,17 @@ export class AppComponent implements OnInit, OnDestroy {
     if (this.greetingInterval) {
       clearInterval(this.greetingInterval);
     }
+  }
+
+  // -----------------------------------------------------------------------
+  // Navegación con Scroll
+  // -----------------------------------------------------------------------
+
+  scrollToSection(sectionId: string): void {
+    // Pequeño delay para asegurar que el DOM está listo
+    setTimeout(() => {
+      this.viewportScroller.scrollToAnchor(sectionId);
+    }, 100);
   }
 
   // -----------------------------------------------------------------------
