@@ -52,13 +52,13 @@
       
       <div class="repo-stats">
         <span *ngIf="repo.language" class="language">
-          💻 {{ repo.language }}
+          <img src="./icons/enchanted_book.png" alt="Language" class="stat-icon"> {{ repo.language }}
         </span>
         <span class="stars">
-          ⭐ {{ repo.stargazers_count }}
+          <img src="./icons/gold_ingot.png" alt="Stars" class="stat-icon"> {{ repo.stargazers_count }}
         </span>
         <span class="forks">
-          🔱 {{ repo.forks_count }}
+          <img src="./icons/redstone.png" alt="Forks" class="stat-icon"> {{ repo.forks_count }}
         </span>
       </div>
 

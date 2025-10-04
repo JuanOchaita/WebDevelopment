@@ -24,20 +24,21 @@
     ></app-nav-item>
 
     <app-nav-item 
-        href="#experience" 
+        href="#skills" 
         iconSrc="/icons/diamond_sword.png" 
-        text="Work Experience" 
-        altText="Sword"
+        text="Skills" 
+        altText="Pickaxe"
         (navClick)="scrollToSection($event)"
     ></app-nav-item>
 
     <app-nav-item 
-        href="#skills" 
+        href="#experience" 
         iconSrc="/icons/diamond_pickaxe.png" 
-        text="Projects & Skills" 
+        text="Work Experience" 
         altText="Pickaxe"
         (navClick)="scrollToSection($event)"
     ></app-nav-item>
+
 
     <app-nav-item 
         href="#contact" 
@@ -65,23 +66,22 @@
     </table>
 </app-minecraft-card>
 
-<app-minecraft-card 
-    id="experience" 
-    iconSrc="/icons/diamond_sword.png" 
-    iconAlt="Diamond Icon"
-    title="Work Experience">
-</app-minecraft-card>
-
-<app-minecraft-card 
-    id="skills" 
-    iconSrc="/icons/diamond_pickaxe.png" 
-    iconAlt="Diamond Icon"
-    title="Projects & Skills">
-    <router-outlet></router-outlet>
-</app-minecraft-card>
 
 <app-information-accordion>
+    <ul>
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+    </ul>
 </app-information-accordion>
+
+<app-minecraft-card 
+    id="experience" 
+    iconSrc="/icons/diamond_pickaxe.png" 
+    iconAlt="Diamond Icon"
+    title="Work Experience">
+    <router-outlet></router-outlet>
+</app-minecraft-card>
 
 <footer id="contact">
     <app-nav-bar>

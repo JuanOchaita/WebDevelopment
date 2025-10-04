@@ -12,6 +12,18 @@
     font-display: swap;
 }
 
+.stat-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 8px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  transition: filter 0.3s ease;
+}
+
 /* Variables CSS para modos oscuro y claro */
 :root {
     /* Modo Oscuro (por defecto) */
