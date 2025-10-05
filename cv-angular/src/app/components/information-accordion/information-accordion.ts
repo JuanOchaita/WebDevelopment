@@ -1,18 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  // Selector que usarás en tu HTML: <app-information-accordion>
   selector: 'app-information-accordion',
   templateUrl: './information-accordion.html',
-  // Los estilos específicos del acordeón irán aquí
   styleUrls: ['./information-accordion.css']
 })
 export class InformationAccordionComponent implements OnInit {
 
-  // Propiedad para el texto del título (puede ser un @Input() si quieres que sea dinámico)
-  title: string = 'Skills';
-  // Propiedad para la ruta de la imagen del icono
-  iconPath: string = "/icons/diamond_sword.png"; 
+  @Input() title: string = '';
+  @Input() iconPath: string = ""; 
 
   constructor() { }
 

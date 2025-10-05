@@ -12,7 +12,7 @@
     <img src="/images/Fake.jpg" alt="Juan Ochaita's Photo" class="profile-photo rounded-3">
     <h1>JUAN OCHAITA</h1>
     <p style="color: var(--text-secondary); margin-top: 8px; transition: color 0.3s ease;" data-translate>
-        {{ 'Computer Science Engineering' | translate }}
+        {{ 'Computer Science Engineering' | translate  }}
     </p>
 
     <div class="splash-container">
@@ -26,7 +26,7 @@
     <app-nav-item 
         href="#education" 
         iconSrc="/icons/book.png" 
-        [text]="'Education' | translate" 
+        [text]="'Education' | translate " 
         altText="Book"
         (navClick)="scrollToSection($event)"
     ></app-nav-item>
@@ -60,7 +60,7 @@
     id="education" 
     iconSrc="/icons/book.png" 
     iconAlt="Diamond Icon"
-    [title]="'Education' | translate">
+    [title]="'Education' | translate | uppercase">
     
     <p class="grid-item-description" data-translate>
         <strong data-translate>{{ 'Description:' | translate }}</strong> 
@@ -90,7 +90,20 @@
     </table>
 </app-minecraft-card>
 
-<app-information-accordion>
+<app-information-accordion  
+    iconPath="/icons/diamond_sword.png" 
+    [title]="'AAA' | translate | uppercase">
+    <ul>
+        <li data-translate>{{ 'Project manager' | translate }}</li>
+        <li data-translate>{{ 'Software projects' | translate }}</li>
+        <li data-translate>{{ 'Electronic projects' | translate }}</li>
+        <li data-translate>{{ '3D Design' | translate }}</li>
+    </ul>
+</app-information-accordion>
+
+<app-information-accordion  
+    iconPath="/icons/map.png" 
+    [title]="'Jobs' | translate | uppercase">
     <ul>
         <li data-translate>{{ 'Project manager' | translate }}</li>
         <li data-translate>{{ 'Software projects' | translate }}</li>
@@ -103,7 +116,7 @@
     id="experience" 
     iconSrc="/icons/diamond_pickaxe.png" 
     iconAlt="Diamond Icon"
-    [title]="'Work Experience' | translate">
+    [title]="'Proyects' | translate | uppercase">
     
     <p class="grid-item-description" data-translate>
         <strong data-translate>{{ 'Description:' | translate }}</strong> 
@@ -118,21 +131,21 @@
         <app-nav-item 
             href="mailto:juanom@ufm.edu" 
             iconSrc="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" 
-            [text]="'Email' | translate" 
+            [text]="'' | translate" 
             altText="Gmail"
         ></app-nav-item>
 
         <app-nav-item 
             href="https://www.linkedin.com/in/juan-ochaita-207685334" 
             iconSrc="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" 
-            [text]="'LinkedIn' | translate" 
+            [text]="'' | translate" 
             altText="LinkedIn"
         ></app-nav-item>
 
         <app-nav-item 
             href="https://github.com/JuanOchaita" 
             iconSrc="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" 
-            [text]="'GitHub' | translate" 
+            [text]="'' | translate" 
             altText="GitHub"
         ></app-nav-item>
 
@@ -140,7 +153,7 @@
             href="javascript:void(0)" 
             (click)="downloadPDF()"
             iconSrc="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/adobeacrobatreader.svg" 
-            [text]="'Download CV' | translate" 
+            [text]="'' | translate" 
             altText="Download CV in PDF"
         ></app-nav-item>
     </app-nav-bar>

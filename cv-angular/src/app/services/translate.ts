@@ -15,16 +15,56 @@ export class TranslateService {
   private http = inject(HttpClient);
   private currentLang = new BehaviorSubject<string>('es');
   private translationsCache = new Map<string, string>();
-  
   private supportedLanguages = [
-    { code: 'es', name: 'Español', flag: '🇪🇸' },
-    { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' },
-    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-    { code: 'it', name: 'Italiano', flag: '🇮🇹' },
-    { code: 'pt', name: 'Português', flag: '🇵🇹' }
-  ];
-
+  { code: 'es', name: 'Español', flag: '🇪🇸' },
+  { code: 'en', name: 'English', flag: '🇺🇸' },
+  { code: 'fr', name: 'Français', flag: '🇫🇷' },
+  { code: 'it', name: 'Italiano', flag: '🇮🇹' },
+  { code: 'pt', name: 'Português', flag: '🇵🇹' },
+  { code: 'zh', name: 'Chinese', flag: '🇨🇳' },
+  { code: 'el', name: 'Greek', flag: '🇬🇷' },
+  { code: 'he', name: 'Hebrew', flag: '🇮🇱' },
+  { code: 'ja', name: 'Japanese', flag: '🇯🇵' },
+  { code: 'ko', name: 'Korean', flag: '🇰🇷' },
+  { code: 'ru', name: 'Russian', flag: '🇷🇺' },
+  { code: 'tr', name: 'Turkish', flag: '🇹🇷' },
+  { code: 'uk', name: 'Ukrainian', flag: '🇺🇦' }
+];
+/*
+private supportedLanguages = [
+  { code: 'es', name: 'Español', flag: '🇪🇸' },
+  { code: 'en', name: 'English', flag: '🇺🇸' },
+  { code: 'fr', name: 'Français', flag: '🇫🇷' },
+  { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
+  { code: 'it', name: 'Italiano', flag: '🇮🇹' },
+  { code: 'pt', name: 'Português', flag: '🇵🇹' },
+  { code: 'ar', name: 'Arabic', flag: '🇸🇦' },
+  { code: 'az', name: 'Azerbaijani', flag: '🇦🇿' },
+  { code: 'ca', name: 'Catalan', flag: '🇦🇩' },
+  { code: 'zh', name: 'Chinese', flag: '🇨🇳' },
+  { code: 'cs', name: 'Czech', flag: '🇨🇿' },
+  { code: 'da', name: 'Danish', flag: '🇩🇰' },
+  { code: 'nl', name: 'Dutch', flag: '🇳🇱' },
+  { code: 'eo', name: 'Esperanto', flag: '🏳️' },
+  { code: 'fi', name: 'Finnish', flag: '🇫🇮' },
+  { code: 'el', name: 'Greek', flag: '🇬🇷' },
+  { code: 'he', name: 'Hebrew', flag: '🇮🇱' },
+  { code: 'hi', name: 'Hindi', flag: '🇮🇳' },
+  { code: 'hu', name: 'Hungarian', flag: '🇭🇺' },
+  { code: 'id', name: 'Indonesian', flag: '🇮🇩' },
+  { code: 'ga', name: 'Irish', flag: '🇮🇪' },
+  { code: 'ja', name: 'Japanese', flag: '🇯🇵' },
+  { code: 'ko', name: 'Korean', flag: '🇰🇷' },
+  { code: 'fa', name: 'Persian', flag: '🇮🇷' },
+  { code: 'pl', name: 'Polish', flag: '🇵🇱' },
+  { code: 'ru', name: 'Russian', flag: '🇷🇺' },
+  { code: 'sk', name: 'Slovak', flag: '🇸🇰' },
+  { code: 'sv', name: 'Swedish', flag: '🇸🇪' },
+  { code: 'th', name: 'Thai', flag: '🇹🇭' },
+  { code: 'tr', name: 'Turkish', flag: '🇹🇷' },
+  { code: 'uk', name: 'Ukrainian', flag: '🇺🇦' }
+];
+*/
   constructor() {
     const savedLang = localStorage.getItem('preferred-language');
     if (savedLang && this.supportedLanguages.some(lang => lang.code === savedLang)) {
