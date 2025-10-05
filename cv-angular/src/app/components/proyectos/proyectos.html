@@ -47,8 +47,8 @@
   <!-- Lista de Repositorios -->
   <div *ngIf="!loading && !error && filteredRepos.length > 0" class="repos-grid">
     <div *ngFor="let repo of filteredRepos" class="repo-card">
-      <h3>{{ repo.name }}</h3>
-      <p class="description">{{ repo.description || 'Sin descripción' }}</p>
+      <h3>{{ repo.name  | translate }}</h3>
+      <p class="description">{{ repo.description  || 'Sin descripción' | translate}}</p>
       
       <div class="repo-stats">
         <span *ngIf="repo.language" class="language">

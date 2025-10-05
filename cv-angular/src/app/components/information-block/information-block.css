@@ -3,7 +3,7 @@
   border: 1px solid var(--border-color);
   background-color: var(--bg-primary);
   padding: 15px 15px 15px 25px;
-  margin: 16px 0; 
+  margin: 10px 0; 
   border-radius: 5px;
   display: flex;
   flex-direction: column;

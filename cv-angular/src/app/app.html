@@ -60,7 +60,7 @@
     id="about-section"
     iconPath="/icons/map.png" 
     [title]="'About' | translate | uppercase">
-      <p>Mi nombre es Juan Ochaita, estudiante de la Universidad Francisco Marroquín. Me apasiona la creación de proyectos, el desarrollo de software y la tecnología en general.</p>
+    <p>{{ 'Mi nombre es Juan Ochaita, estudiante de la Universidad Francisco Marroquín. Me apasiona la creación de proyectos, el desarrollo de software y la tecnología en general.' | translate }}</p>
 </app-information-accordion>
 
 <app-information-accordion  
@@ -123,7 +123,7 @@
     id="projects" 
     iconSrc="/icons/diamond_pickaxe.png" 
     iconAlt="Diamond Icon"
-    [title]="'Proyects' | translate | uppercase">
+    [title]="'Projects' | translate | uppercase">
     
     <p class="grid-item-description" data-translate>
         <strong data-translate>{{ 'Description:' | translate }}</strong> 

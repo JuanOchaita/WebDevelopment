@@ -16,7 +16,7 @@ import { LanguageSelectorComponent } from './components/language-selector/langua
 import { TranslatePipe } from './pipes/translate-pipe';
 import { TranslateService } from './services/translate';
 
-// Servicio de datos
+// Servicio de datos 
 import { DataService } from './services/data-service';
 
 // Interfaz para las tarjetas

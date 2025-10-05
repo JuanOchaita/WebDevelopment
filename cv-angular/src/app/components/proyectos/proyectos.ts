@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { GithubService, GithubRepo } from '../../services/github';
+import { TranslateService } from '../../services/translate';
+import { TranslatePipe } from '../../pipes/translate-pipe';
 
 @Component({
   selector: 'app-proyectos',
   standalone: true,
-  imports: [CommonModule, FormsModule], // Agregar FormsModule
+  imports: [CommonModule, FormsModule, TranslatePipe], // Agregar FormsModule
   templateUrl: './proyectos.html',
   styleUrls: ['./proyectos.css']
 })

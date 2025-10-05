@@ -444,7 +444,7 @@ a:visited { color: var(--link-visited-color); }
     header .profile-photo { width: 100px; height: 100px; }
     header h1 { font-size: 28px; }
     .grid-item-card { padding: 12px; }
-    .grid-container { margin-bottom: 36px; padding: 20px; }
+    .grid-container { margin-bottom: 10px; padding: 20px; }
     .minecraft-splash { font-size: 16px; }
 }
 
@@ -525,6 +525,7 @@ a:visited { color: var(--link-visited-color); }
     border-radius: 6px;
     transition: background-color 0.3s ease;
     border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .theme-toggle-button:hover {
