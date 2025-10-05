@@ -32,9 +32,9 @@
     ></app-nav-item>
 
     <app-nav-item 
-        href="#skills" 
+        href="#about" 
         iconSrc="/icons/diamond_sword.png" 
-        [text]="'Skills' | translate" 
+        [text]="'About' | translate" 
         altText="Pickaxe"
         (navClick)="scrollToSection($event)"
     ></app-nav-item>
@@ -90,25 +90,32 @@
     </table>
 </app-minecraft-card>
 
-<app-information-accordion  
-    iconPath="/icons/diamond_sword.png" 
-    [title]="'AAA' | translate | uppercase">
-    <ul>
-        <li data-translate>{{ 'Project manager' | translate }}</li>
-        <li data-translate>{{ 'Software projects' | translate }}</li>
-        <li data-translate>{{ 'Electronic projects' | translate }}</li>
-        <li data-translate>{{ '3D Design' | translate }}</li>
-    </ul>
+<app-information-accordion 
+    id = "about"
+    iconPath="/icons/map.png" 
+    [title]="'About' | translate | uppercase">
+      <p>Mi MI MI Mi Mi</p>
 </app-information-accordion>
 
 <app-information-accordion  
-    iconPath="/icons/map.png" 
+    id = "skills"
+    iconPath="/icons/diamond_sword.png" 
+    [title]="'Skills' | translate | uppercase">
+   <ul>
+        <li *ngFor="let skill of skills" data-translate>
+            {{ skill | translate }}
+        </li>
+    </ul>
+</app-information-accordion>
+
+<app-information-accordion
+    id = "experience"
+    iconPath="/icons/diamond_sword.png" 
     [title]="'Jobs' | translate | uppercase">
     <ul>
-        <li data-translate>{{ 'Project manager' | translate }}</li>
-        <li data-translate>{{ 'Software projects' | translate }}</li>
-        <li data-translate>{{ 'Electronic projects' | translate }}</li>
-        <li data-translate>{{ '3D Design' | translate }}</li>
+        <li *ngFor="let job of jobs" data-translate>
+            {{ job | translate }}
+        </li>
     </ul>
 </app-information-accordion>
 

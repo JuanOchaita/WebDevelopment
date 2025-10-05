@@ -6,9 +6,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./information-accordion.css']
 })
 export class InformationAccordionComponent implements OnInit {
-
+  
+  @Input() id: string = '';
   @Input() title: string = '';
-  @Input() iconPath: string = ""; 
+  @Input() iconPath: string = ''; 
 
   constructor() { }
 

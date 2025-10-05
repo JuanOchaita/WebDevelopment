@@ -17,6 +17,9 @@ import { LanguageSelectorComponent } from './components/language-selector/langua
 import { TranslatePipe } from './pipes/translate-pipe';
 import { TranslateService } from './services/translate';
 
+// Servicio de datos
+import { DataService } from './services/data-service'; // Agregar esta importación
+
 // Interfaz para las tarjetas
 interface CardData {
   id: string;
@@ -50,8 +53,9 @@ interface CardData {
 export class AppComponent implements OnInit, OnDestroy {
   title = 'cv-angular';
 
-  // Inyectar el servicio de traducción
+  // Inyectar servicios
   private translateService = inject(TranslateService);
+  private dataService = inject(DataService); // Inyectar DataService
 
   // Propiedades de Tema
   isLightMode: boolean = false;
@@ -69,6 +73,10 @@ export class AppComponent implements OnInit, OnDestroy {
   // Propiedad para el idioma actual
   currentLang: string = 'es';
 
+  // Propiedades para los datos del servicio
+  skills: string[] = [];
+  jobs: string[] = [];
+
   constructor(
     private renderer: Renderer2,
     private viewportScroller: ViewportScroller
@@ -81,6 +89,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.allCards = this.getInitialCardData();
     this.filteredCards = this.allCards;
     
+    // Cargar datos del servicio
+    this.loadServiceData();
+    
     // Suscribirse a cambios de idioma
     this.translateService.getCurrentLangObservable().subscribe(lang => {
       this.currentLang = lang;
@@ -88,6 +99,14 @@ export class AppComponent implements OnInit, OnDestroy {
       this.updateGreeting();
     });
   }
+
+  // Método para cargar datos del servicio
+  loadServiceData(): void {
+    this.skills = this.dataService.getSkills();
+    this.jobs = this.dataService.getJobs();
+  }
+
+  // ... (el resto de los métodos se mantienen igual)
 
   ngOnDestroy(): void {
     if (this.greetingInterval) {
