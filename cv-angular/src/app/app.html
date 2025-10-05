@@ -1,14 +1,22 @@
 <header>
-    <button id="theme-toggle-button" class="theme-toggle-button" (click)="toggleTheme()">
-        <img src="/icons/clock.png" [attr.alt]="themeIconAlt" class="icon" id="theme-icon">
-    </button>
+    <div class="header-controls">
+        <!-- Selector de idiomas -->
+        <app-language-selector></app-language-selector>
+        
+        <!-- Botón de tema -->
+        <button id="theme-toggle-button" class="theme-toggle-button" (click)="toggleTheme()">
+            <img src="/icons/clock.png" [attr.alt]="themeIconAlt" class="icon" id="theme-icon">
+        </button>
+    </div>
 
     <img src="/images/Fake.jpg" alt="Juan Ochaita's Photo" class="profile-photo rounded-3">
     <h1>JUAN OCHAITA</h1>
-    <p style="color: var(--text-secondary); margin-top: 8px; transition: color 0.3s ease;">Computer Science Engineering</p>
+    <p style="color: var(--text-secondary); margin-top: 8px; transition: color 0.3s ease;" data-translate>
+        {{ 'Computer Science Engineering' | translate }}
+    </p>
 
     <div class="splash-container">
-        <div class="minecraft-splash" id="greeting-message">
+        <div class="minecraft-splash" id="greeting-message" data-translate>
             {{ greetingMessage }}
         </div>
     </div>
@@ -18,7 +26,7 @@
     <app-nav-item 
         href="#education" 
         iconSrc="/icons/book.png" 
-        text="Education" 
+        [text]="'Education' | translate" 
         altText="Book"
         (navClick)="scrollToSection($event)"
     ></app-nav-item>
@@ -26,7 +34,7 @@
     <app-nav-item 
         href="#skills" 
         iconSrc="/icons/diamond_sword.png" 
-        text="Skills" 
+        [text]="'Skills' | translate" 
         altText="Pickaxe"
         (navClick)="scrollToSection($event)"
     ></app-nav-item>
@@ -34,16 +42,15 @@
     <app-nav-item 
         href="#experience" 
         iconSrc="/icons/diamond_pickaxe.png" 
-        text="Work Experience" 
+        [text]="'Work Experience' | translate" 
         altText="Pickaxe"
         (navClick)="scrollToSection($event)"
     ></app-nav-item>
 
-
     <app-nav-item 
         href="#contact" 
         iconSrc="/icons/compass.png" 
-        text="Contact" 
+        [text]="'Contact' | translate" 
         altText="Map"
         (navClick)="scrollToSection($event)"
     ></app-nav-item>
@@ -53,57 +60,98 @@
     id="education" 
     iconSrc="/icons/book.png" 
     iconAlt="Diamond Icon"
-    title="Education">
-    <p class="grid-item-description"><strong>Description: </strong>Juan Ochaita's academic background</p>
+    [title]="'Education' | translate">
+    
+    <p class="grid-item-description" data-translate>
+        <strong data-translate>{{ 'Description:' | translate }}</strong> 
+        {{ 'Juan Ochaita\'s academic background' | translate }}
+    </p>
+    
     <table class="grid-item-table">
         <thead>
-            <tr><th>Year</th><th>Institution</th><th>Degree</th></tr>
+            <tr>
+                <th data-translate>{{ 'Year' | translate }}</th>
+                <th data-translate>{{ 'Institution' | translate }}</th>
+                <th data-translate>{{ 'Degree' | translate }}</th>
+            </tr>
         </thead>
         <tbody>
-            <tr><td>2024-2027</td><td>Universidad Francisco Marroquín</td><td>Computer Science Engineering</td></tr>
-            <tr><td>2023-2023</td><td>Harvard Online</td><td>CS50 Python</td></tr>
+            <tr>
+                <td>2024-2027</td>
+                <td data-translate>Universidad Francisco Marroquín</td>
+                <td data-translate>{{ 'Computer Science Engineering' | translate }}</td>
+            </tr>
+            <tr>
+                <td>2023-2023</td>
+                <td data-translate>Harvard Online</td>
+                <td data-translate>CS50 Python</td>
+            </tr>
         </tbody>
     </table>
 </app-minecraft-card>
 
-
 <app-information-accordion>
     <ul>
-        <li>Project manager</li>
-        <li>Software projects</li>
-        <li>Electronic projects</li>
-        <li>3D Design</li>
+        <li data-translate>{{ 'Project manager' | translate }}</li>
+        <li data-translate>{{ 'Software projects' | translate }}</li>
+        <li data-translate>{{ 'Electronic projects' | translate }}</li>
+        <li data-translate>{{ '3D Design' | translate }}</li>
     </ul>
 </app-information-accordion>
+
+<app-minecraft-card 
+    id="skills" 
+    iconSrc="/icons/diamond_sword.png" 
+    iconAlt="Diamond Sword"
+    [title]="'Skills' | translate">
+    
+    <p class="grid-item-description" data-translate>
+        <strong data-translate>{{ 'Description:' | translate }}</strong> 
+        {{ 'Technical skills and competencies' | translate }}
+    </p>
+    
+    <!-- Aquí puedes agregar tu contenido de habilidades -->
+    <div data-translate>
+        {{ 'Python, JavaScript, Angular, Git, and more...' | translate }}
+    </div>
+</app-minecraft-card>
 
 <app-minecraft-card 
     id="experience" 
     iconSrc="/icons/diamond_pickaxe.png" 
     iconAlt="Diamond Icon"
-    title="Work Experience">
+    [title]="'Work Experience' | translate">
+    
+    <p class="grid-item-description" data-translate>
+        <strong data-translate>{{ 'Description:' | translate }}</strong> 
+        {{ 'Professional experience and projects' | translate }}
+    </p>
+    
     <router-outlet></router-outlet>
 </app-minecraft-card>
 
 <footer id="contact">
+    <h2 data-translate style="text-align: center; margin-bottom: 20px;">{{ 'Contact' | translate }}</h2>
+    
     <app-nav-bar>
         <app-nav-item 
             href="mailto:juanom@ufm.edu" 
             iconSrc="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/gmail.svg" 
-            text="" 
+            [text]="'Email' | translate" 
             altText="Gmail"
         ></app-nav-item>
 
         <app-nav-item 
             href="https://www.linkedin.com/in/juan-ochaita-207685334" 
             iconSrc="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/linkedin.svg" 
-            text="" 
+            [text]="'LinkedIn' | translate" 
             altText="LinkedIn"
         ></app-nav-item>
 
         <app-nav-item 
             href="https://github.com/JuanOchaita" 
             iconSrc="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" 
-            text="" 
+            [text]="'GitHub' | translate" 
             altText="GitHub"
         ></app-nav-item>
 
@@ -111,7 +159,7 @@
             href="javascript:void(0)" 
             (click)="downloadPDF()"
             iconSrc="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/adobeacrobatreader.svg" 
-            text="" 
+            [text]="'Download CV' | translate" 
             altText="Download CV in PDF"
         ></app-nav-item>
     </app-nav-bar>

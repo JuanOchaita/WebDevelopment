@@ -1,1 +1,29 @@
-<p>language-selector works!</p>
+<div class="language-selector">
+  <button 
+    class="selector-btn" 
+    (click)="toggleDropdown($event)"
+    aria-haspopup="listbox"
+    aria-expanded="isOpen"
+  >
+    <span class="flag">{{ getCurrentLanguageFlag() }}</span>
+    <span class="language-name">{{ getCurrentLanguageName() }}</span>
+    <span class="arrow">{{ isOpen ? '▲' : '▼' }}</span>
+  </button>
+
+  <div class="dropdown" *ngIf="isOpen" (click)="$event.stopPropagation()">
+    <ul class="language-list" role="listbox">
+      <li 
+        *ngFor="let lang of languages" 
+        class="language-item"
+        [class.active]="lang.code === currentLang"
+        (click)="selectLanguage(lang.code, $event)"
+        role="option"
+        [attr.aria-selected]="lang.code === currentLang"
+      >
+        <span class="flag">{{ lang.flag }}</span>
+        <span class="language-name">{{ lang.name }}</span>
+        <span class="check" *ngIf="lang.code === currentLang">✓</span>
+      </li>
+    </ul>
+  </div>
+</div>

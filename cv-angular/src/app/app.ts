@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Renderer2 } from '@angular/core';
+import { Component, OnInit, OnDestroy, Renderer2, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -11,6 +11,11 @@ import { MinecraftCardComponent } from './components/information-block/informati
 import { CardListComponent } from './components/card-list/card-list';
 import { InformationAccordionComponent } from './components/information-accordion/information-accordion';
 import { ProyectosComponent } from './components/proyectos/proyectos';
+
+// Componentes de traducción
+import { LanguageSelectorComponent } from './components/language-selector/language-selector';
+import { TranslatePipe } from './pipes/translate-pipe';
+import { TranslateService } from './services/translate';
 
 // Interfaz para las tarjetas
 interface CardData {
@@ -34,13 +39,19 @@ interface CardData {
     MinecraftCardComponent,
     CardListComponent,
     InformationAccordionComponent,
-    ProyectosComponent
+    ProyectosComponent,
+    // Agregar componentes de traducción
+    LanguageSelectorComponent,
+    TranslatePipe
   ],
   templateUrl: './app.html',
   styleUrls: ['./app.css'],
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'cv-angular';
+
+  // Inyectar el servicio de traducción
+  private translateService = inject(TranslateService);
 
   // Propiedades de Tema
   isLightMode: boolean = false;
@@ -55,6 +66,9 @@ export class AppComponent implements OnInit, OnDestroy {
   allCards: CardData[] = [];
   filteredCards: CardData[] = [];
 
+  // Propiedad para el idioma actual
+  currentLang: string = 'es';
+
   constructor(
     private renderer: Renderer2,
     private viewportScroller: ViewportScroller
@@ -66,6 +80,13 @@ export class AppComponent implements OnInit, OnDestroy {
     this.greetingInterval = setInterval(() => this.updateGreeting(), 60000);
     this.allCards = this.getInitialCardData();
     this.filteredCards = this.allCards;
+    
+    // Suscribirse a cambios de idioma
+    this.translateService.getCurrentLangObservable().subscribe(lang => {
+      this.currentLang = lang;
+      // Actualizar el saludo cuando cambie el idioma
+      this.updateGreeting();
+    });
   }
 
   ngOnDestroy(): void {
@@ -109,10 +130,12 @@ export class AppComponent implements OnInit, OnDestroy {
         src: '/icons/command_block.png',
         alt: 'Command Block',
         iconClass: 'minecraft-icon',
-        searchableText:
-          'Python Desarrollo backend y análisis de datos Data Science',
+        searchableText: 'Python Desarrollo backend y análisis de datos Data Science',
         items: [
-          { title: 'Python', description: 'Desarrollo backend y análisis de datos' },
+          { 
+            title: 'Python', 
+            description: 'Desarrollo backend y análisis de datos' 
+          },
         ],
       },
       {
@@ -122,7 +145,10 @@ export class AppComponent implements OnInit, OnDestroy {
         iconClass: 'minecraft-icon',
         searchableText: 'Git GitHub Control de versiones y colaboración',
         items: [
-          { title: 'Git/GitHub', description: 'Control de versiones y colaboración' },
+          { 
+            title: 'Git/GitHub', 
+            description: 'Control de versiones y colaboración' 
+          },
         ],
       },
     ];
@@ -167,7 +193,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   // -----------------------------------------------------------------------
-  // Lógica de Saludo
+  // Lógica de Saludo (Actualizada para soportar traducción)
   // -----------------------------------------------------------------------
 
   getTimeBasedGreeting(): string {
@@ -186,7 +212,18 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   updateGreeting(): void {
-    this.greetingMessage = this.getTimeBasedGreeting();
+    const greeting = this.getTimeBasedGreeting();
+    
+    // Si el idioma actual no es inglés, traducir el saludo
+    if (this.currentLang !== 'en') {
+      this.translateService.getTranslation(greeting).then(translated => {
+        this.greetingMessage = translated;
+      }).catch(() => {
+        this.greetingMessage = greeting;
+      });
+    } else {
+      this.greetingMessage = greeting;
+    }
   }
 
   // -----------------------------------------------------------------------
