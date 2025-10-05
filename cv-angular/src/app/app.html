@@ -100,23 +100,6 @@
 </app-information-accordion>
 
 <app-minecraft-card 
-    id="skills" 
-    iconSrc="/icons/diamond_sword.png" 
-    iconAlt="Diamond Sword"
-    [title]="'Skills' | translate">
-    
-    <p class="grid-item-description" data-translate>
-        <strong data-translate>{{ 'Description:' | translate }}</strong> 
-        {{ 'Technical skills and competencies' | translate }}
-    </p>
-    
-    <!-- Aquí puedes agregar tu contenido de habilidades -->
-    <div data-translate>
-        {{ 'Python, JavaScript, Angular, Git, and more...' | translate }}
-    </div>
-</app-minecraft-card>
-
-<app-minecraft-card 
     id="experience" 
     iconSrc="/icons/diamond_pickaxe.png" 
     iconAlt="Diamond Icon"
@@ -130,9 +113,7 @@
     <router-outlet></router-outlet>
 </app-minecraft-card>
 
-<footer id="contact">
-    <h2 data-translate style="text-align: center; margin-bottom: 20px;">{{ 'Contact' | translate }}</h2>
-    
+<footer id="contact">    
     <app-nav-bar>
         <app-nav-item 
             href="mailto:juanom@ufm.edu" 

@@ -499,3 +499,117 @@ a:visited { color: var(--link-visited-color); }
         border: 1px solid #ccc !important;
     }
 }
+
+/* ==================================================================== */
+/* ESTILOS PARA EL SELECTOR DE IDIOMAS Y CONTROLES DEL HEADER          */
+/* ==================================================================== */
+
+/* Controles del header (selector de idiomas + botón de tema) */
+.header-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Botón de tema */
+.theme-toggle-button {
+    position: static;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    border: 1px solid var(--border-color);
+}
+
+.theme-toggle-button:hover {
+    background-color: var(--bg-tertiary);
+    border-color: var(--link-color);
+}
+
+.theme-toggle-button .icon {
+    width: 20px;
+    height: 20px;
+    filter: var(--clock-icon-filter);
+    transition: filter 0.3s ease;
+}
+
+/* Selector de idiomas - Estilos específicos para integrar con tu tema */
+app-language-selector {
+    display: inline-block;
+}
+
+/* Asegurar que el header tenga posición relativa para los controles absolutos */
+header {
+    position: relative;
+}
+
+/* Estilos para el contenido del header cuando hay controles */
+header .profile-photo {
+    margin-top: 20px;
+}
+
+/* Responsive para móviles */
+@media screen and (max-width: 768px) {
+    .header-controls {
+        position: static;
+        justify-content: center;
+        margin-bottom: 15px;
+        gap: 15px;
+        order: -1;
+    }
+    
+    header {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 20px 15px;
+    }
+    
+    .profile-photo {
+        margin: 0 auto 15px auto;
+        order: 2;
+    }
+    
+    header h1 {
+        order: 3;
+    }
+    
+    header p {
+        order: 4;
+    }
+    
+    .splash-container {
+        order: 5;
+    }
+    
+    .theme-toggle-button {
+        padding: 6px;
+    }
+    
+    .theme-toggle-button .icon {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+/* Tablets */
+@media screen and (max-width: 1024px) {
+    .header-controls {
+        top: 15px;
+        right: 15px;
+        gap: 8px;
+    }
+}
+
+/* Estilos para impresión - ocultar controles */
+@media print {
+    .header-controls {
+        display: none !important;
+    }
+}
