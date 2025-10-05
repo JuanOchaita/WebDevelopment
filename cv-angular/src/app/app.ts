@@ -7,10 +7,10 @@ import { ViewportScroller } from '@angular/common';
 // Componentes importados
 import { NavBar } from './nav-bar/nav-bar';
 import { NavItem } from './nav-bar/nav-item/nav-item';
-import { MinecraftCardComponent } from './information-block/information-block';
-import { CardListComponent } from './card-list/card-list';
-import { InformationAccordionComponent } from './information-accordion/information-accordion';
-import { ProyectosComponent } from './proyectos/proyectos';
+import { MinecraftCardComponent } from './components/information-block/information-block';
+import { CardListComponent } from './components/card-list/card-list';
+import { InformationAccordionComponent } from './components/information-accordion/information-accordion';
+import { ProyectosComponent } from './components/proyectos/proyectos';
 
 // Interfaz para las tarjetas
 interface CardData {

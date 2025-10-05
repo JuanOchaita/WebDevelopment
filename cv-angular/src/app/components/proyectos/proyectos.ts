@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { GithubService, GithubRepo } from '../services/github';
+import { GithubService, GithubRepo } from '../../services/github';
 
 @Component({
   selector: 'app-proyectos',
