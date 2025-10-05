@@ -1,16 +1,15 @@
 import { Component, OnInit, OnDestroy, Renderer2, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ViewportScroller } from '@angular/common';
+import { filter } from 'rxjs/operators';
 
 // Componentes importados
 import { NavBar } from './nav-bar/nav-bar';
 import { NavItem } from './nav-bar/nav-item/nav-item';
 import { MinecraftCardComponent } from './components/information-block/information-block';
-import { CardListComponent } from './components/card-list/card-list';
 import { InformationAccordionComponent } from './components/information-accordion/information-accordion';
-import { ProyectosComponent } from './components/proyectos/proyectos';
 
 // Componentes de traducción
 import { LanguageSelectorComponent } from './components/language-selector/language-selector';
@@ -18,7 +17,7 @@ import { TranslatePipe } from './pipes/translate-pipe';
 import { TranslateService } from './services/translate';
 
 // Servicio de datos
-import { DataService } from './services/data-service'; // Agregar esta importación
+import { DataService } from './services/data-service';
 
 // Interfaz para las tarjetas
 interface CardData {
@@ -37,13 +36,11 @@ interface CardData {
     CommonModule,
     FormsModule,
     RouterOutlet,
+    RouterModule,
     NavBar,
     NavItem,
     MinecraftCardComponent,
-    CardListComponent,
     InformationAccordionComponent,
-    ProyectosComponent,
-    // Agregar componentes de traducción
     LanguageSelectorComponent,
     TranslatePipe
   ],
@@ -55,7 +52,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   // Inyectar servicios
   private translateService = inject(TranslateService);
-  private dataService = inject(DataService); // Inyectar DataService
+  private dataService = inject(DataService);
 
   // Propiedades de Tema
   isLightMode: boolean = false;
@@ -79,7 +76,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private renderer: Renderer2,
-    private viewportScroller: ViewportScroller
+    private viewportScroller: ViewportScroller,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -98,6 +96,39 @@ export class AppComponent implements OnInit, OnDestroy {
       // Actualizar el saludo cuando cambie el idioma
       this.updateGreeting();
     });
+
+    // Escuchar cambios de ruta para hacer scroll a los fragments
+    this.setupRouteFragmentScrolling();
+  }
+
+  // Configurar scroll automático para fragments de rutas - CORREGIDO
+  setupRouteFragmentScrolling(): void {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        // Mapeo de rutas a fragments
+        const routeToFragmentMap: { [key: string]: string } = {
+          'about': 'about-section',
+          'skills': 'skills-section',
+          'jobs': 'jobs-subsection',
+          'studies': 'studies-subsection'
+        };
+
+        // Obtener los segmentos de la URL
+        const urlSegments = event.urlAfterRedirects.split('/');
+        
+        // Buscar el último segmento que esté en nuestro mapeo
+        for (let i = urlSegments.length - 1; i >= 0; i--) {
+          const segment = urlSegments[i];
+          if (routeToFragmentMap[segment]) {
+            const fragment = routeToFragmentMap[segment];
+            setTimeout(() => {
+              this.scrollToSection(fragment);
+            }, 500); // Aumentar el delay para asegurar que el DOM esté listo
+            break;
+          }
+        }
+      });
   }
 
   // Método para cargar datos del servicio
@@ -105,8 +136,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.skills = this.dataService.getSkills();
     this.jobs = this.dataService.getJobs();
   }
-
-  // ... (el resto de los métodos se mantienen igual)
 
   ngOnDestroy(): void {
     if (this.greetingInterval) {
@@ -119,10 +148,48 @@ export class AppComponent implements OnInit, OnDestroy {
   // -----------------------------------------------------------------------
 
   scrollToSection(sectionId: string): void {
-    // Pequeño delay para asegurar que el DOM está listo
-    setTimeout(() => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start',
+        inline: 'nearest'
+      });
+      
+      // También actualizar la URL con el fragmento
       this.viewportScroller.scrollToAnchor(sectionId);
-    }, 100);
+    } else {
+      console.warn(`Element with id '${sectionId}' not found`);
+    }
+  }
+
+  // -----------------------------------------------------------------------
+  // Navegación a Rutas
+  // -----------------------------------------------------------------------
+
+  navigateToAbout(href: string): void {
+    this.router.navigate(['/proyectos', 'about']).then(() => {
+      // Scroll manual después de la navegación
+      setTimeout(() => {
+        this.scrollToSection('about-section');
+      }, 100);
+    });
+  }
+
+  navigateToSkills(href: string): void {
+    this.router.navigate(['/proyectos', 'skills']).then(() => {
+      setTimeout(() => {
+        this.scrollToSection('skills-section');
+      }, 100);
+    });
+  }
+
+  navigateToExperience(href: string): void {
+    this.router.navigate(['/proyectos', 'experience', 'jobs']).then(() => {
+      setTimeout(() => {
+        this.scrollToSection('jobs-subsection');
+      }, 100);
+    });
   }
 
   // -----------------------------------------------------------------------

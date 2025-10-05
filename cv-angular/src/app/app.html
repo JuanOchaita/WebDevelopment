@@ -24,27 +24,27 @@
 
 <app-nav-bar>
     <app-nav-item 
-        href="#education" 
-        iconSrc="/icons/book.png" 
-        [text]="'Education' | translate " 
-        altText="Book"
-        (navClick)="scrollToSection($event)"
-    ></app-nav-item>
-
-    <app-nav-item 
-        href="#about" 
-        iconSrc="/icons/diamond_sword.png" 
+        [routerLink]="['/proyectos', 'about']"
+        iconSrc="/icons/map.png" 
         [text]="'About' | translate" 
-        altText="Pickaxe"
-        (navClick)="scrollToSection($event)"
+        altText="Book"
+        (navClick)="navigateToAbout($event)"
     ></app-nav-item>
 
     <app-nav-item 
-        href="#experience" 
-        iconSrc="/icons/diamond_pickaxe.png" 
-        [text]="'Work Experience' | translate" 
+        [routerLink]="['/proyectos', 'skills']"
+        iconSrc="/icons/diamond_sword.png" 
+        [text]="'Skills' | translate" 
         altText="Pickaxe"
-        (navClick)="scrollToSection($event)"
+        (navClick)="navigateToSkills($event)"
+    ></app-nav-item>
+
+    <app-nav-item 
+        [routerLink]="['/proyectos', 'experience', 'jobs']"
+        iconSrc="/icons/command_block.png" 
+        [text]="'Experience' | translate" 
+        altText="Pickaxe"
+        (navClick)="navigateToExperience($event)"
     ></app-nav-item>
 
     <app-nav-item 
@@ -55,6 +55,35 @@
         (navClick)="scrollToSection($event)"
     ></app-nav-item>
 </app-nav-bar>
+
+<app-information-accordion 
+    id="about-section"
+    iconPath="/icons/map.png" 
+    [title]="'About' | translate | uppercase">
+      <p>Mi MI MI Mi Mi</p>
+</app-information-accordion>
+
+<app-information-accordion  
+    id="skills-section"
+    iconPath="/icons/diamond_sword.png" 
+    [title]="'Skills' | translate | uppercase">
+   <ul>
+        <li *ngFor="let skill of skills" data-translate>
+            {{ skill | translate }}
+        </li>
+    </ul>
+</app-information-accordion>
+
+<app-information-accordion
+    id="jobs-subsection"
+    iconPath="/icons/redstone.png" 
+    [title]="'Jobs' | translate | uppercase">
+    <ul>
+        <li *ngFor="let job of jobs" data-translate>
+            {{ job | translate }}
+        </li>
+    </ul>
+</app-information-accordion>
 
 <app-minecraft-card 
     id="education" 
@@ -90,37 +119,8 @@
     </table>
 </app-minecraft-card>
 
-<app-information-accordion 
-    id = "about"
-    iconPath="/icons/map.png" 
-    [title]="'About' | translate | uppercase">
-      <p>Mi MI MI Mi Mi</p>
-</app-information-accordion>
-
-<app-information-accordion  
-    id = "skills"
-    iconPath="/icons/diamond_sword.png" 
-    [title]="'Skills' | translate | uppercase">
-   <ul>
-        <li *ngFor="let skill of skills" data-translate>
-            {{ skill | translate }}
-        </li>
-    </ul>
-</app-information-accordion>
-
-<app-information-accordion
-    id = "experience"
-    iconPath="/icons/diamond_sword.png" 
-    [title]="'Jobs' | translate | uppercase">
-    <ul>
-        <li *ngFor="let job of jobs" data-translate>
-            {{ job | translate }}
-        </li>
-    </ul>
-</app-information-accordion>
-
 <app-minecraft-card 
-    id="experience" 
+    id="projects" 
     iconSrc="/icons/diamond_pickaxe.png" 
     iconAlt="Diamond Icon"
     [title]="'Proyects' | translate | uppercase">
