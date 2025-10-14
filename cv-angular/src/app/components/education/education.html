@@ -1,0 +1,43 @@
+<div class="education-container">
+  <div class="education-table-container">
+    @if (educationList.length > 0) {
+    <table class="education-table">
+      <thead>
+        <tr>
+          <th>Año</th>
+          <th>Institución</th>
+          <th>Título/Certificación</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (edu of educationList; track edu.id) {
+        <tr>
+          <td>{{ edu.year }}</td>
+          <td>{{ edu.institution }}</td>
+          <td>{{ edu.degree }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }
+
+    @if (educationList.length === 0 && !loading) {
+    <div class="no-data">
+      No hay registros de educación.
+    </div>
+    }
+
+    @if (loading) {
+    <div class="loading">
+      <p>Cargando educación...</p>
+    </div>
+    }
+
+    @if (error) {
+    <div class="error-message">
+      {{ error }}
+      <button class="btn-retry" (click)="loadEducation()">Reintentar</button>
+    </div>
+    }
+  </div>
+</div>

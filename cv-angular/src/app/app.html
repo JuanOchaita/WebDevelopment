@@ -85,6 +85,8 @@
     </ul>
 </app-information-accordion>
 
+
+
 <app-minecraft-card 
     id="education" 
     iconSrc="/icons/book.png" 
@@ -96,27 +98,8 @@
         {{ 'Juan Ochaita\'s academic background' | translate }}
     </p>
     
-    <table class="grid-item-table">
-        <thead>
-            <tr>
-                <th data-translate>{{ 'Year' | translate }}</th>
-                <th data-translate>{{ 'Institution' | translate }}</th>
-                <th data-translate>{{ 'Degree' | translate }}</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>2024-2027</td>
-                <td data-translate>Universidad Francisco Marroquín</td>
-                <td data-translate>{{ 'Computer Science Engineering' | translate }}</td>
-            </tr>
-            <tr>
-                <td>2023-2023</td>
-                <td data-translate>Harvard Online</td>
-                <td data-translate>CS50 Python</td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Componente de la API para gestión dinámica de educación -->
+    <app-education></app-education>
 </app-minecraft-card>
 
 <app-minecraft-card 

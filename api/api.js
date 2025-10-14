@@ -9,7 +9,7 @@ app.use(express.json());
 
 let education = [
   { id: 1, year: '2023-2023', institution: 'Harvard Online', degree: 'CS50 Python' },
-  { id: 2, year: '2024-2027', institution: 'UFM', degree: 'Computer Science Engineering' }
+  { id: 2, year: '2024-3000', institution: 'UFM', degree: 'Computer Science Engineering' }
 ];
 
 app.get('/education', (req, res) => {

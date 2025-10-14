@@ -10,6 +10,7 @@ import { NavBar } from './nav-bar/nav-bar';
 import { NavItem } from './nav-bar/nav-item/nav-item';
 import { MinecraftCardComponent } from './components/information-block/information-block';
 import { InformationAccordionComponent } from './components/information-accordion/information-accordion';
+import { EducationComponent } from './components/education/education'; // ← SOLO ESTA LÍNEA AGREGADA
 
 // Componentes de traducción
 import { LanguageSelectorComponent } from './components/language-selector/language-selector';
@@ -42,6 +43,7 @@ interface CardData {
     MinecraftCardComponent,
     InformationAccordionComponent,
     LanguageSelectorComponent,
+    EducationComponent, // ← SOLO ESTA LÍNEA AGREGADA
     TranslatePipe
   ],
   templateUrl: './app.html',

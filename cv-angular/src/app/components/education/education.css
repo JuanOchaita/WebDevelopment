@@ -1,0 +1,152 @@
+/* ==================================================================== */
+/* ESTILOS EDUCATION COMPONENT - SOLO TABLA                           */
+/* ==================================================================== */
+
+.education-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--bg-secondary);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  font-size: 14px;
+}
+
+/* Encabezados de tabla - Estilo limpio */
+.education-table thead {
+  background-color: var(--table-header-bg);
+}
+
+.education-table th {
+  color: var(--text-secondary);
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  border-bottom: 2px solid var(--border-color);
+  font-family: 'Minecraft', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  transition: all 0.3s ease;
+}
+
+/* Celdas de la tabla - Estilo minimalista */
+.education-table td {
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+  vertical-align: top;
+}
+
+/* Última fila sin borde inferior */
+.education-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Hover effect suave */
+.education-table tbody tr:hover {
+  background-color: var(--table-row-hover-bg);
+}
+
+/* Columnas específicas con anchos proporcionales */
+.education-table th:nth-child(1),
+.education-table td:nth-child(1) {
+  width: 20%;
+  font-weight: 600;
+  color: var(--link-color);
+}
+
+.education-table th:nth-child(2),
+.education-table td:nth-child(2) {
+  width: 35%;
+}
+
+.education-table th:nth-child(3),
+.education-table td:nth-child(3) {
+  width: 45%;
+}
+
+/* Estados y mensajes */
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.no-data {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.error-message {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  border-radius: 4px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #f5c6cb;
+}
+
+.btn-retry {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Minecraft', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Transiciones para modo claro/oscuro */
+.education-table,
+.education-table th,
+.education-table td {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* MEDIA QUERIES */
+
+/* Tablets */
+@media screen and (max-width: 1024px) {
+  .education-table th,
+  .education-table td {
+    padding: 12px;
+  }
+  
+  .education-table {
+    font-size: 13px;
+  }
+}
+
+/* Smartphones */
+@media screen and (max-width: 768px) {
+  .education-table {
+    font-size: 12px;
+    min-width: 500px;
+  }
+  
+  .education-table th,
+  .education-table td {
+    padding: 10px 8px;
+  }
+  
+  .education-table th:nth-child(1),
+  .education-table td:nth-child(1) {
+    width: 25%;
+  }
+  
+  .education-table th:nth-child(2),
+  .education-table td:nth-child(2) {
+    width: 30%;
+  }
+  
+  .education-table th:nth-child(3),
+  .education-table td:nth-child(3) {
+    width: 45%;
+  }
+}
