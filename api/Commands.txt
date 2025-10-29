@@ -1,0 +1,18 @@
+# Obtener toda la educación
+curl http://localhost:3001/education
+
+# Obtener educación específica por ID
+curl http://localhost:3001/education/1
+
+# Creacion de registro:
+curl -X POST http://localhost:3001/education \
+-H "Content-Type: application/json" \
+-d '{"id":3,"year":"2025-2025","institution":"Harvard Online","degree":"C550 SQL"}'
+
+# Actualizar registro:
+curl -X PATCH http://localhost:3001/education/2 \
+-H "Content-Type: application/json" \
+-d '{"degree":"Computer Science"}'
+
+# Eliminar registro:
+curl -X DELETE http://localhost:3001/education/2
